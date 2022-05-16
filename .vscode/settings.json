@@ -1,0 +1,104 @@
+{
+    "go.lintFlags": [
+        "--disable=all",
+        "--enable=errcheck"
+    ],
+    "files.exclude": {},
+    "search.exclude": {
+        "**/node_modules": true,
+        "**/bower_components": true,
+        "**/*.code-search": true,
+        "**/.git": true,
+        "**/*.log": true,
+        "exec": true,
+        "pkg": true
+    },
+    "ecode-go.targetList": [
+        {
+            "name": "gate",
+            "arch": "amd64",
+            "os": "windows",
+            "icon": "conf/icon.ico",
+            "src_path": "test/gate",
+            "build_arg": "-a -work",
+            "build_path": "exec",
+            "build_copy": [
+                "conf/*"
+            ],
+            "start_delay": 0.5,
+            "stop_delay": 0.3
+        },
+        {
+            "name": "gate",
+            "arch": "amd64",
+            "os": "linux",
+            "icon": "conf/icon.ico",
+            "src_path": "test/gate",
+            "build_arg": "-a -work",
+            "build_path": "exec",
+            "build_copy": [
+                "conf/*"
+            ],
+            "start_delay": 0.5,
+            "stop_delay": 0.3
+        },
+        {
+            "name": "gate",
+            "arch": "amd64",
+            "os": "darwin",
+            "icon": "conf/icon.ico",
+            "src_path": "test/gate",
+            "build_arg": "-a -work",
+            "build_path": "exec",
+            "build_copy": [
+                "conf/*"
+            ],
+            "start_delay": 0.5,
+            "stop_delay": 0.3
+        },
+        {
+            "name": "hall",
+            "arch": "amd64",
+            "os": "windows",
+            "icon": "conf/icon.ico",
+            "src_path": "test/hall",
+            "build_arg": "-a -work",
+            "build_path": "exec",
+            "build_copy": [
+                "conf/*"
+            ],
+            "start_delay": 0.5,
+            "stop_delay": 0.3
+        },
+        {
+            "name": "hall",
+            "arch": "amd64",
+            "os": "linux",
+            "icon": "conf/icon.ico",
+            "src_path": "test/hall",
+            "build_arg": "-a -work",
+            "build_path": "exec",
+            "build_copy": [
+                "conf/*"
+            ],
+            "start_delay": 0.5,
+            "stop_delay": 0.3
+        },
+        {
+            "name": "hall",
+            "arch": "amd64",
+            "os": "darwin",
+            "icon": "conf/icon.ico",
+            "src_path": "test/hall",
+            "build_arg": "-a -work",
+            "build_path": "exec",
+            "build_copy": [
+                "conf/*"
+            ],
+            "start_delay": 0.5,
+            "stop_delay": 0.3
+        }
+    ],
+    "ecode-go.srcList": [],
+    "ecode-go.libList": []
+}
