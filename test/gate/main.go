@@ -1,17 +1,17 @@
 package main
 
 import (
-	_ "esvr/test/shared/protocol"
+	"github.com/hsu2017/EP.GO.ESVR.LIB/core/xserver"
+	_ "github.com/hsu2017/EP.GO.ESVR.LIB/test/shared/protocol"
 
-	_ "esvr/core/utility/xlog"
-	"esvr/core/utility/xrun"
+	_ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xlog"
+	"github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xrun"
 
-	"esvr/core/server"
-	"esvr/test/gate/app"
+	"github.com/hsu2017/EP.GO.ESVR.LIB/test/gate/app"
 )
 
 func main() {
 	defer xrun.Caught(true)
 
-	server.Start(app.NewGateServer())
+	xserver.Start(app.NewGateServer())
 }

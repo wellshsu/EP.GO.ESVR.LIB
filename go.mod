@@ -1,4 +1,4 @@
-module esvr
+module github.com/hsu2017/EP.GO.ESVR.LIB
 
 go 1.17
 

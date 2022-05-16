@@ -2,14 +2,15 @@
 package app
 
 import (
-	"esvr/core/server"
-	"esvr/core/utility/xconn"
-	"esvr/core/utility/xevt"
-	"esvr/core/utility/xlog"
-	"esvr/core/utility/xmsg"
-	"esvr/core/utility/xstring"
-	"esvr/test/shared/protocol"
 	"fmt"
+
+	"github.com/hsu2017/EP.GO.ESVR.LIB/core/xserver"
+	"github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xconn"
+	"github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xevt"
+	"github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xlog"
+	"github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xmsg"
+	"github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xstring"
+	"github.com/hsu2017/EP.GO.ESVR.LIB/test/shared/protocol"
 
 	"github.com/golang/protobuf/proto"
 )
@@ -29,7 +30,7 @@ func NewGateClient(server *xconn.Server) *GateClient {
 }
 
 type GateServer struct {
-	server.Server
+	xserver.Server
 	Svr *xconn.Server
 
 	IsWS    bool   // 是否面向WebSocket连接（默认true）
@@ -46,7 +47,7 @@ func NewGateServer() *GateServer {
 	this := &GateServer{}
 	this.CTOR(this)
 	this.BeatMsg, _ = xmsg.PackMsg(int(protocol.EID.GM_HEART_BEAT), &protocol.GM_Common{Result: proto.Int(0)})
-	server.RegEvt(server.EVT_SERVER_STARTED, func(param interface{}) {
+	xserver.RegEvt(xserver.EVT_SERVER_STARTED, func(param interface{}) {
 		svrID := this.Config.SvrID()
 		this.Svr = xconn.NewServer().
 			SetAddr(this.Address).SetIsWS(this.IsWS).
@@ -69,7 +70,7 @@ func NewGateServer() *GateServer {
 			}).
 			Start()
 	})
-	server.RegRpc(int(protocol.EID.RPC_GET_ONLINE_FROM_GATE), func(reply *xevt.EvtReply, frame *xmsg.Frame) {
+	xserver.RegRpc(int(protocol.EID.RPC_GET_ONLINE_FROM_GATE), func(reply *xevt.EvtReply, frame *xmsg.Frame) {
 		resp := &protocol.RPC_GetOnlineFromGateResp{}
 		reply.Done(resp)
 		this.Svr.Clients.Range(func(k, v interface{}) bool {
@@ -136,17 +137,17 @@ func (this *GateServer) ToServer(client *GateClient, dst string, bytes []byte, g
 		GoID:    proto.Int(xmsg.PackGo(gol, gor)),
 		RW:      proto.Bool(rw),
 	}
-	return server.SendFrame(frame)
+	return xserver.SendFrame(frame)
 }
 
 func (this *GateServer) RemoveClient(client *GateClient) {
 	if client.UID != -1 {
-		hall := server.GLan.SelectRand("hall")
+		hall := xserver.GLan.SelectRand("hall")
 		if hall != nil {
 			req := &protocol.RPC_GateNotifyOfflineReq{}
 			req.UID = proto.Int(client.UID)
 			req.Url = proto.String(client.GateUrl)
-			server.SendAsync(int(protocol.EID.RPC_GATE_NOTIFY_OFFLINE), client.UID, req, hall.ServerUrl(), nil)
+			xserver.SendAsync(int(protocol.EID.RPC_GATE_NOTIFY_OFFLINE), client.UID, req, hall.ServerUrl(), nil)
 		}
 		client.UID = -1
 	}
@@ -158,7 +159,7 @@ func (this *GateServer) FromClient(client *GateClient, bytes []byte) {
 	if eid == protocol.EID.GM_HEART_BEAT {
 		client.Write(this.BeatMsg)
 	} else {
-		route := server.ROUTEMAP[id]
+		route := xserver.ROUTEMAP[id]
 		if route == nil {
 			xlog.Warn("ctx.GateServer.FromClient: no route for id-%v found", id)
 		} else {
@@ -166,7 +167,7 @@ func (this *GateServer) FromClient(client *GateClient, bytes []byte) {
 				if dst == "client" {
 					continue
 				}
-				conn := server.GLan.SelectRand(dst)
+				conn := xserver.GLan.SelectRand(dst)
 				if conn == nil {
 					xlog.Warn("ctx.GateServer.FromClient: select conn failed, uid=%v, id=%v, tag=%v", client.UID, id, dst)
 				} else {

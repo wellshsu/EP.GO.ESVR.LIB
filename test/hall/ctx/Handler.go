@@ -1,18 +1,18 @@
 package ctx
 
 import (
-	"esvr/core/server"
-	"esvr/core/utility/xevt"
-	"esvr/core/utility/xmsg"
-	"esvr/core/utility/xorm"
-	"esvr/core/utility/xsession"
-	"esvr/test/shared/models/mmn"
-	"esvr/test/shared/protocol"
+	"github.com/hsu2017/EP.GO.ESVR.LIB/core/xserver"
+	"github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xevt"
+	"github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xmsg"
+	"github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xorm"
+	"github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xsession"
+	"github.com/hsu2017/EP.GO.ESVR.LIB/test/shared/models/mmn"
+	"github.com/hsu2017/EP.GO.ESVR.LIB/test/shared/protocol"
 )
 
 func init() {
-	server.RegMsg(int(protocol.EID.GM_LOGIN_REQUEST), HandleLogin)
-	server.RegRpc(int(protocol.EID.RPC_GATE_NOTIFY_OFFLINE), HandleLogout)
+	xserver.RegMsg(int(protocol.EID.GM_LOGIN_REQUEST), HandleLogin)
+	xserver.RegRpc(int(protocol.EID.RPC_GATE_NOTIFY_OFFLINE), HandleLogout)
 }
 
 func HandleLogin(frame *xmsg.Frame) {

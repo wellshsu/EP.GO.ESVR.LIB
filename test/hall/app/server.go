@@ -4,9 +4,9 @@
 package app
 
 import (
-	"esvr/core/server"
-	_ "esvr/test/hall/ctx"
-	"esvr/test/shared/models/mmn"
+	"github.com/hsu2017/EP.GO.ESVR.LIB/core/xserver"
+	_ "github.com/hsu2017/EP.GO.ESVR.LIB/test/hall/ctx"
+	"github.com/hsu2017/EP.GO.ESVR.LIB/test/shared/models/mmn"
 )
 
 func init() {
@@ -14,7 +14,7 @@ func init() {
 }
 
 type HallServer struct {
-	server.Server
+	xserver.Server
 }
 
 func NewHallServer() *HallServer {

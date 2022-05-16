@@ -1,11 +1,11 @@
 package ctx
 
 import (
-	"esvr/core/server"
-	"esvr/core/utility/xlog"
-	"esvr/core/utility/xmsg"
-	"esvr/test/shared/models/mmn"
-	"esvr/test/shared/protocol"
+	"github.com/hsu2017/EP.GO.ESVR.LIB/core/xserver"
+	"github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xlog"
+	"github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xmsg"
+	"github.com/hsu2017/EP.GO.ESVR.LIB/test/shared/models/mmn"
+	"github.com/hsu2017/EP.GO.ESVR.LIB/test/shared/protocol"
 
 	"github.com/golang/protobuf/proto"
 )
@@ -26,9 +26,9 @@ func NewPlayer(md ...*mmn.Player) *Player {
 
 func (this *Player) Send(id protocol.EIDEnum, data proto.Message, frame ...*xmsg.Frame) {
 	if len(frame) == 1 {
-		server.SendMsg(int(id), data, frame[0])
+		xserver.SendMsg(int(id), data, frame[0])
 	} else {
-		server.SendMsg(int(id), data, xmsg.SimpleFrame(this.GateUrl, int(this.ID)))
+		xserver.SendMsg(int(id), data, xmsg.SimpleFrame(this.GateUrl, int(this.ID)))
 	}
 }
 
@@ -37,7 +37,7 @@ func (this *Player) OnLogin(req *protocol.GM_LoginReq, frame *xmsg.Frame) {
 	this.GateUrl = frame.GetSrcUrl()
 	if this.GateUrl != frame.GetSrcUrl() { // 网关
 		if this.GateUrl != "" {
-			server.SendMsg(int(protocol.EID.GM_KICK_OFF), &protocol.GM_Common{Result: proto.Int(0)}, xmsg.SimpleFrame(this.GateUrl, int(this.ID)))
+			xserver.SendMsg(int(protocol.EID.GM_KICK_OFF), &protocol.GM_Common{Result: proto.Int(0)}, xmsg.SimpleFrame(this.GateUrl, int(this.ID)))
 		}
 	}
 	this.GateUrl = frame.GetSrcUrl()
@@ -46,7 +46,7 @@ func (this *Player) OnLogin(req *protocol.GM_LoginReq, frame *xmsg.Frame) {
 	resp := &protocol.GM_LoginResp{}
 	resp.ID = proto.Int(this.ID)
 	resp.Status = proto.Int(this.Online)
-	server.SendMsg(int(protocol.EID.GM_LOGIN_RESPONSE), resp, xmsg.ShiftFrame(frame))
+	xserver.SendMsg(int(protocol.EID.GM_LOGIN_RESPONSE), resp, xmsg.ShiftFrame(frame))
 }
 
 func (this *Player) OnLogout(req *protocol.RPC_GateNotifyOfflineReq, frame *xmsg.Frame) {

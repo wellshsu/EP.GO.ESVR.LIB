@@ -1,14 +1,15 @@
 package protocol
 
 import (
-	"esvr/core/server"
 	"reflect"
 	"strconv"
 	"strings"
+
+	"github.com/hsu2017/EP.GO.ESVR.LIB/core/xserver"
 )
 
 func init() {
-	rmap := make(map[int]*server.Route)
+	rmap := make(map[int]*xserver.Route)
 	ttpe := reflect.TypeOf(EID)
 	numlen := ttpe.NumField()
 	for i := 0; i < numlen; i++ {
@@ -17,7 +18,7 @@ func init() {
 		_gid := tfld.Tag.Get("go")
 		_rw := tfld.Tag.Get("rw")
 		if _dst != "" || _gid != "" || _rw != "" {
-			route := &server.Route{}
+			route := &xserver.Route{}
 			route.Name = tfld.Name
 			route.Dst = strings.Split(_dst, ",")
 			if _gid != "" {
@@ -50,5 +51,5 @@ func init() {
 			rmap[id] = route
 		}
 	}
-	server.RegRoute(rmap)
+	xserver.RegRoute(rmap)
 }
