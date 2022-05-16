@@ -20,7 +20,7 @@
             "os": "windows",
             "icon": "conf/icon.ico",
             "src_path": "test/gate",
-            "build_arg": "-a -work",
+            "build_arg": "",
             "build_path": "exec",
             "build_copy": [
                 "conf/*"
