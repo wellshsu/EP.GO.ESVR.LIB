@@ -10,8 +10,8 @@ require (
 	github.com/mediocregopher/radix.v2 v0.0.0-20181115013041-b67df6e626f9
 	github.com/shiena/ansicolor v0.0.0-20200904210342-c7312218db18
 	github.com/v2pro/plz v0.0.0-20200805122259-422184e41b6e
-	golang.org/x/net v0.0.0-20220425223048-2871e0cb64e4
-	golang.org/x/sys v0.0.0-20211216021012-1d35b9e2eb4e
+	golang.org/x/net v0.0.0-20220516155154-20f960328961
+	golang.org/x/sys v0.0.0-20220513210249-45d2b4557a2a
 	nanomsg.org/go-mangos v1.4.0
 )
 
