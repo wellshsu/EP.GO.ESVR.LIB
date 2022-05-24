@@ -117,7 +117,7 @@ func (this *ConnServer) ToClient(frame *xmsg.MsgReq) {
 	client := this.Svr.GetClient(id)
 	if client == nil {
 		xlog.Warn("ctx.ConnServer.ToClient: no client-%v found, uid=%v, msgId=%v, dst=%v, src=%v",
-			id, frame.Route.GetUID(), xmsg.ParseID(frame.Data), url, frame.Route.GetSrc())
+			id, frame.Route.GetUID(), xmsg.UnpackID(frame.Data), url, frame.Route.GetSrc())
 		return
 	}
 	this.FromServer(client.(*ConnClient), frame)
@@ -149,7 +149,7 @@ func (this *ConnServer) RemoveClient(client *ConnClient) {
 }
 
 func (this *ConnServer) FromClient(client *ConnClient, bytes []byte) {
-	rid := xmsg.ParseID(bytes)
+	rid := xmsg.UnpackID(bytes)
 	eid := protocol.MIDEnum(rid)
 	if eid == protocol.MID.GM_HEART_BEAT {
 		client.Write(this.BeatMsg)
@@ -174,7 +174,7 @@ func (this *ConnServer) FromClient(client *ConnClient, bytes []byte) {
 }
 
 func (this *ConnServer) FromServer(client *ConnClient, frame *xmsg.MsgReq) {
-	id := xmsg.ParseID(frame.Data)
+	id := xmsg.UnpackID(frame.Data)
 	if id == -1 {
 		xlog.Warn("ctx.ConnServer.FromServer: parse msg id failed, uid=%v", client.UID)
 		return

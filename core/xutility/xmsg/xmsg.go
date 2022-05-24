@@ -91,9 +91,18 @@ func PackGID(l int, r int) int {
 func UnpackGID(g int) (l, r int) {
 	return l, r
 }
+
+// 封装网络帧
 func PackFrame(frame IFrame) ([]byte, error) {
 	return []byte{}, nil
 }
+
+// 解析网络帧
 func UnpackFrame(bytes []byte) (byte, IFrame, error) {
 	return 0, nil, nil
+}
+
+// 转换网络帧（src和dst互换）
+func ShiftFrame(frame IFrame) IFrame {
+	return nil
 }

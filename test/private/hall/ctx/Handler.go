@@ -19,7 +19,7 @@ func init() {
 
 func HandleLogin(mreq *xmsg.MsgReq) {
 	req := &protocol.GM_LoginReq{}
-	if xmsg.ParseMsg(mreq.Data, req) != nil {
+	if xmsg.UnpackMsg(mreq.Data, req) != nil {
 		return
 	}
 	account := req.GetAccount()
@@ -39,7 +39,7 @@ func HandleLogin(mreq *xmsg.MsgReq) {
 
 func HandleLogout(rreq *xmsg.RpcReq, rresp *xmsg.RpcResp) {
 	req := &protocol.RPC_ConnNotifyOfflineReq{}
-	if xmsg.ParseMsg(rreq.Data, req) != nil {
+	if xmsg.UnpackProto(rreq.Data, req) != nil {
 		return
 	}
 	playerID := int(req.GetUID())
