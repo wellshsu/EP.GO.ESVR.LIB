@@ -23,6 +23,3 @@ func NewLanCfg(name, addr string) *LanCfg {
 func (this *LanCfg) ServerID() string {
 	return ""
 }
-func (this *LanCfg) ServerUrl() string {
-	return ""
-}

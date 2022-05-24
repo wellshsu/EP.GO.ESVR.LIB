@@ -2,12 +2,14 @@
 package xmsg
 
 import (
+	_ "errors"
 	_ "fmt"
 	_ "math"
 
 	_ "github.com/golang/protobuf/proto"
 	_ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xlog"
 	_ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xmath"
+	_ "google.golang.org/protobuf/proto"
 )
 
 const (
@@ -42,11 +44,6 @@ func ParseUID(buf []byte) int {
 	return 0
 }
 
-// 解析网络帧
-func ParseFrame(frame *Frame, out interface{}) error {
-	return nil
-}
-
 // 解析消息
 func ParseMsg(buf []byte, out interface{}) error {
 	return nil
@@ -56,23 +53,37 @@ func ParseMsg(buf []byte, out interface{}) error {
 func PackMsg(id int, in interface{}) ([]byte, error) {
 	return []byte{}, nil
 }
-
-// 转换网络帧（src和dest互换）
-func ShiftFrame(frame *Frame) *Frame {
+func NewLoopReq() *LoopReq {
+	return nil
+}
+func NewMsgReq() *MsgReq {
+	return nil
+}
+func NewRpcReq() *RpcReq {
+	return nil
+}
+func NewRpcResp() *RpcResp {
+	return nil
+}
+func NewCgiReq() *CgiReq {
+	return nil
+}
+func NewCgiResp() *CgiResp {
 	return nil
 }
 
-// 使用dest和uid构建一个简易的网络帧
-func SimpleFrame(dest string, uid int) *Frame {
-	return nil
-}
-
-// 封装GoID（l-左区间，r-右区间，皆为闭区间）
-func PackGo(l int, r int) int {
+// 封装GID（l-左区间，r-右区间，皆为闭区间）
+func PackGID(l int, r int) int {
 	return 0
 }
 
-// 解析GoID（l-左区间，r-右区间，皆为闭区间）
-func ParseGo(g int) (l, r int) {
+// 解析GID（l-左区间，r-右区间，皆为闭区间）
+func UnpackGID(g int) (l, r int) {
 	return l, r
+}
+func PackFrame(frame IFrame) ([]byte, error) {
+	return []byte{}, nil
+}
+func UnpackFrame(bytes []byte) (byte, IFrame, error) {
+	return 0, nil, nil
 }

@@ -24,7 +24,7 @@ CREATE TABLE `player` (
   `account` varchar(255) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
   `online` int(11) unsigned zerofill NOT NULL,
-  `gate_url` text,
+  `conn_url` text,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 

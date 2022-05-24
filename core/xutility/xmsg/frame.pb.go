@@ -16,217 +16,420 @@ import (
 // A compilation error at this line likely means your copy of the
 // proto package needs to be updated.
 // please upgrade the proto package
-type Frame struct {
-	SrcUrl               *string  `protobuf:"bytes,1,req,name=SrcUrl" json:"SrcUrl,omitempty"`
-	DstUrl               *string  `protobuf:"bytes,2,req,name=DstUrl" json:"DstUrl,omitempty"`
-	MapIDs               *MapID   `protobuf:"bytes,3,opt,name=MapIDs" json:"MapIDs,omitempty"`
-	MapUrls              *MapUrl  `protobuf:"bytes,4,opt,name=MapUrls" json:"MapUrls,omitempty"`
-	UID                  *int32   `protobuf:"varint,5,opt,name=UID,def=-1" json:"UID,omitempty"`
-	GoID                 *int32   `protobuf:"varint,6,opt,name=GoID,def=-1" json:"GoID,omitempty"`
-	RawData              []byte   `protobuf:"bytes,7,opt,name=RawData" json:"RawData,omitempty"`
-	RpcID                *int64   `protobuf:"varint,8,opt,name=RpcID,def=-1" json:"RpcID,omitempty"`
-	RpcGo                *int32   `protobuf:"varint,9,opt,name=RpcGo,def=-1" json:"RpcGo,omitempty"`
-	Rpc                  *bool    `protobuf:"varint,10,opt,name=Rpc,def=0" json:"Rpc,omitempty"`
-	Next                 *bool    `protobuf:"varint,11,opt,name=Next,def=0" json:"Next,omitempty"`
-	RW                   *bool    `protobuf:"varint,12,opt,name=RW,def=1" json:"RW,omitempty"`
+type FrameType int32
+
+const (
+	FrameType_LOOP_REQ FrameType = 1
+	FrameType_MSG_REQ  FrameType = 2
+	FrameType_RPC_REQ  FrameType = 3
+	FrameType_RPC_RESP FrameType = 4
+	FrameType_CGI_REQ  FrameType = 5
+	FrameType_CGI_RESP FrameType = 6
+)
+
+var FrameType_name = map[int32]string{
+	1: "LOOP_REQ",
+	2: "MSG_REQ",
+	3: "RPC_REQ",
+	4: "RPC_RESP",
+	5: "CGI_REQ",
+	6: "CGI_RESP",
+}
+var FrameType_value = map[string]int32{
+	"LOOP_REQ": 1,
+	"MSG_REQ":  2,
+	"RPC_REQ":  3,
+	"RPC_RESP": 4,
+	"CGI_REQ":  5,
+	"CGI_RESP": 6,
+}
+
+func (x FrameType) Enum() *FrameType {
+	return nil
+}
+func (x FrameType) String() string {
+	return ""
+}
+func (x *FrameType) UnmarshalJSON(data []byte) error {
+	return nil
+}
+func (FrameType) EnumDescriptor() ([]byte, []int) {
+	return []byte{}, []int{}
+}
+
+type Route struct {
+	// 源地址
+	Src *string `protobuf:"bytes,1,req,name=Src" json:"Src,omitempty"`
+	// 目标地址
+	Dst *string `protobuf:"bytes,2,req,name=Dst" json:"Dst,omitempty"`
+	// 路由ID
+	RID *int32 `protobuf:"varint,3,req,name=RID" json:"RID,omitempty"`
+	// 自增ID
+	IID *int64 `protobuf:"varint,4,opt,name=IID" json:"IID,omitempty"`
+	// 进程ID
+	PID *int32 `protobuf:"varint,5,opt,name=PID" json:"PID,omitempty"`
+	// 协程ID
+	GID *int32 `protobuf:"varint,6,opt,name=GID,def=-1" json:"GID,omitempty"`
+	// 用户ID
+	UID *int32 `protobuf:"varint,7,opt,name=UID,def=-1" json:"UID,omitempty"`
+	// reserved ID1
+	MID1 *int64 `protobuf:"varint,8,opt,name=MID1" json:"MID1,omitempty"`
+	// reserved ID2
+	MID2 *int64 `protobuf:"varint,9,opt,name=MID2" json:"MID2,omitempty"`
+	// reserved ID3
+	MID3 *int64 `protobuf:"varint,10,opt,name=MID3" json:"MID3,omitempty"`
+	// reserved Url1
+	MUrl1 *string `protobuf:"bytes,11,opt,name=MUrl1" json:"MUrl1,omitempty"`
+	// reserved Url2
+	MUrl2 *string `protobuf:"bytes,12,opt,name=MUrl2" json:"MUrl2,omitempty"`
+	// reserved Url3
+	MUrl3                *string  `protobuf:"bytes,13,opt,name=MUrl3" json:"MUrl3,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *Frame) Reset()         { return }
-func (m *Frame) String() string { return "" }
-func (*Frame) ProtoMessage()    { return }
-func (*Frame) Descriptor() ([]byte, []int) {
+func (m *Route) Reset()         { return }
+func (m *Route) String() string { return "" }
+func (*Route) ProtoMessage()    { return }
+func (*Route) Descriptor() ([]byte, []int) {
 	return []byte{}, []int{}
 }
-func (m *Frame) XXX_Unmarshal(b []byte) error {
+func (m *Route) XXX_Unmarshal(b []byte) error {
 	return nil
 }
-func (m *Frame) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+func (m *Route) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return []byte{}, nil
 }
-func (m *Frame) XXX_Merge(src proto.Message) {
+func (m *Route) XXX_Merge(src proto.Message) {
 	return
 }
-func (m *Frame) XXX_Size() int {
+func (m *Route) XXX_Size() int {
 	return 0
 }
-func (m *Frame) XXX_DiscardUnknown() {
+func (m *Route) XXX_DiscardUnknown() {
 	return
 }
 
-const Default_Frame_UID int32 = -1
-const Default_Frame_GoID int32 = -1
-const Default_Frame_RpcID int64 = -1
-const Default_Frame_RpcGo int32 = -1
-const Default_Frame_Rpc bool = false
-const Default_Frame_Next bool = false
-const Default_Frame_RW bool = true
+const Default_Route_GID int32 = -1
+const Default_Route_UID int32 = -1
 
-func (m *Frame) GetSrcUrl() string {
+func (m *Route) GetSrc() string {
 	return ""
 }
-func (m *Frame) GetDstUrl() string {
+func (m *Route) GetDst() string {
 	return ""
 }
-func (m *Frame) GetMapIDs() *MapID {
-	return nil
-}
-func (m *Frame) GetMapUrls() *MapUrl {
-	return nil
-}
-func (m *Frame) GetUID() int32 {
+func (m *Route) GetRID() int32 {
 	return 0
 }
-func (m *Frame) GetGoID() int32 {
+func (m *Route) GetIID() int64 {
 	return 0
 }
-func (m *Frame) GetRawData() []byte {
+func (m *Route) GetPID() int32 {
+	return 0
+}
+func (m *Route) GetGID() int32 {
+	return 0
+}
+func (m *Route) GetUID() int32 {
+	return 0
+}
+func (m *Route) GetMID1() int64 {
+	return 0
+}
+func (m *Route) GetMID2() int64 {
+	return 0
+}
+func (m *Route) GetMID3() int64 {
+	return 0
+}
+func (m *Route) GetMUrl1() string {
+	return ""
+}
+func (m *Route) GetMUrl2() string {
+	return ""
+}
+func (m *Route) GetMUrl3() string {
+	return ""
+}
+
+// Loop请求
+type LoopReq struct {
+	Route                *Route   `protobuf:"bytes,1,opt,name=Route" json:"Route,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *LoopReq) Reset()         { return }
+func (m *LoopReq) String() string { return "" }
+func (*LoopReq) ProtoMessage()    { return }
+func (*LoopReq) Descriptor() ([]byte, []int) {
+	return []byte{}, []int{}
+}
+func (m *LoopReq) XXX_Unmarshal(b []byte) error {
+	return nil
+}
+func (m *LoopReq) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return []byte{}, nil
+}
+func (m *LoopReq) XXX_Merge(src proto.Message) {
+	return
+}
+func (m *LoopReq) XXX_Size() int {
+	return 0
+}
+func (m *LoopReq) XXX_DiscardUnknown() {
+	return
+}
+func (m *LoopReq) GetRoute() *Route {
+	return nil
+}
+
+// Msg请求
+type MsgReq struct {
+	// 路由
+	Route *Route `protobuf:"bytes,1,req,name=Route" json:"Route,omitempty"`
+	// 数据包
+	Data                 []byte   `protobuf:"bytes,2,opt,name=Data" json:"Data,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *MsgReq) Reset()         { return }
+func (m *MsgReq) String() string { return "" }
+func (*MsgReq) ProtoMessage()    { return }
+func (*MsgReq) Descriptor() ([]byte, []int) {
+	return []byte{}, []int{}
+}
+func (m *MsgReq) XXX_Unmarshal(b []byte) error {
+	return nil
+}
+func (m *MsgReq) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return []byte{}, nil
+}
+func (m *MsgReq) XXX_Merge(src proto.Message) {
+	return
+}
+func (m *MsgReq) XXX_Size() int {
+	return 0
+}
+func (m *MsgReq) XXX_DiscardUnknown() {
+	return
+}
+func (m *MsgReq) GetRoute() *Route {
+	return nil
+}
+func (m *MsgReq) GetData() []byte {
 	return []byte{}
 }
-func (m *Frame) GetRpcID() int64 {
-	return 0
-}
-func (m *Frame) GetRpcGo() int32 {
-	return 0
-}
-func (m *Frame) GetRpc() bool {
-	return false
-}
-func (m *Frame) GetNext() bool {
-	return false
-}
-func (m *Frame) GetRW() bool {
-	return false
-}
 
-type MapID struct {
-	ID1                  *int32   `protobuf:"varint,1,opt,name=ID1" json:"ID1,omitempty"`
-	ID2                  *int32   `protobuf:"varint,2,opt,name=ID2" json:"ID2,omitempty"`
-	ID3                  *int32   `protobuf:"varint,3,opt,name=ID3" json:"ID3,omitempty"`
-	ID4                  *int32   `protobuf:"varint,4,opt,name=ID4" json:"ID4,omitempty"`
-	ID5                  *int32   `protobuf:"varint,5,opt,name=ID5" json:"ID5,omitempty"`
-	ID6                  *int32   `protobuf:"varint,6,opt,name=ID6" json:"ID6,omitempty"`
-	ID7                  *int32   `protobuf:"varint,7,opt,name=ID7" json:"ID7,omitempty"`
-	ID8                  *int32   `protobuf:"varint,8,opt,name=ID8" json:"ID8,omitempty"`
-	ID9                  *int32   `protobuf:"varint,9,opt,name=ID9" json:"ID9,omitempty"`
+// Rpc请求
+type RpcReq struct {
+	// 路由
+	Route *Route `protobuf:"bytes,1,req,name=Route" json:"Route,omitempty"`
+	// 数据包
+	Data                 []byte   `protobuf:"bytes,2,opt,name=Data" json:"Data,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *MapID) Reset()         { return }
-func (m *MapID) String() string { return "" }
-func (*MapID) ProtoMessage()    { return }
-func (*MapID) Descriptor() ([]byte, []int) {
+func (m *RpcReq) Reset()         { return }
+func (m *RpcReq) String() string { return "" }
+func (*RpcReq) ProtoMessage()    { return }
+func (*RpcReq) Descriptor() ([]byte, []int) {
 	return []byte{}, []int{}
 }
-func (m *MapID) XXX_Unmarshal(b []byte) error {
+func (m *RpcReq) XXX_Unmarshal(b []byte) error {
 	return nil
 }
-func (m *MapID) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+func (m *RpcReq) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return []byte{}, nil
 }
-func (m *MapID) XXX_Merge(src proto.Message) {
+func (m *RpcReq) XXX_Merge(src proto.Message) {
 	return
 }
-func (m *MapID) XXX_Size() int {
+func (m *RpcReq) XXX_Size() int {
 	return 0
 }
-func (m *MapID) XXX_DiscardUnknown() {
+func (m *RpcReq) XXX_DiscardUnknown() {
 	return
 }
-func (m *MapID) GetID1() int32 {
-	return 0
+func (m *RpcReq) GetRoute() *Route {
+	return nil
 }
-func (m *MapID) GetID2() int32 {
-	return 0
-}
-func (m *MapID) GetID3() int32 {
-	return 0
-}
-func (m *MapID) GetID4() int32 {
-	return 0
-}
-func (m *MapID) GetID5() int32 {
-	return 0
-}
-func (m *MapID) GetID6() int32 {
-	return 0
-}
-func (m *MapID) GetID7() int32 {
-	return 0
-}
-func (m *MapID) GetID8() int32 {
-	return 0
-}
-func (m *MapID) GetID9() int32 {
-	return 0
+func (m *RpcReq) GetData() []byte {
+	return []byte{}
 }
 
-type MapUrl struct {
-	Url1                 *string  `protobuf:"bytes,1,opt,name=Url1" json:"Url1,omitempty"`
-	Url2                 *string  `protobuf:"bytes,2,opt,name=Url2" json:"Url2,omitempty"`
-	Url3                 *string  `protobuf:"bytes,3,opt,name=Url3" json:"Url3,omitempty"`
-	Url4                 *string  `protobuf:"bytes,4,opt,name=Url4" json:"Url4,omitempty"`
-	Url5                 *string  `protobuf:"bytes,5,opt,name=Url5" json:"Url5,omitempty"`
-	Url6                 *string  `protobuf:"bytes,6,opt,name=Url6" json:"Url6,omitempty"`
-	Url7                 *string  `protobuf:"bytes,7,opt,name=Url7" json:"Url7,omitempty"`
-	Url8                 *string  `protobuf:"bytes,8,opt,name=Url8" json:"Url8,omitempty"`
-	Url9                 *string  `protobuf:"bytes,9,opt,name=Url9" json:"Url9,omitempty"`
+// Rpc响应
+type RpcResp struct {
+	// 路由
+	Route *Route `protobuf:"bytes,1,req,name=Route" json:"Route,omitempty"`
+	// 数据包
+	Data                 []byte   `protobuf:"bytes,2,opt,name=Data" json:"Data,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *MapUrl) Reset()         { return }
-func (m *MapUrl) String() string { return "" }
-func (*MapUrl) ProtoMessage()    { return }
-func (*MapUrl) Descriptor() ([]byte, []int) {
+func (m *RpcResp) Reset()         { return }
+func (m *RpcResp) String() string { return "" }
+func (*RpcResp) ProtoMessage()    { return }
+func (*RpcResp) Descriptor() ([]byte, []int) {
 	return []byte{}, []int{}
 }
-func (m *MapUrl) XXX_Unmarshal(b []byte) error {
+func (m *RpcResp) XXX_Unmarshal(b []byte) error {
 	return nil
 }
-func (m *MapUrl) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+func (m *RpcResp) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	return []byte{}, nil
 }
-func (m *MapUrl) XXX_Merge(src proto.Message) {
+func (m *RpcResp) XXX_Merge(src proto.Message) {
 	return
 }
-func (m *MapUrl) XXX_Size() int {
+func (m *RpcResp) XXX_Size() int {
 	return 0
 }
-func (m *MapUrl) XXX_DiscardUnknown() {
+func (m *RpcResp) XXX_DiscardUnknown() {
 	return
 }
-func (m *MapUrl) GetUrl1() string {
+func (m *RpcResp) GetRoute() *Route {
+	return nil
+}
+func (m *RpcResp) GetData() []byte {
+	return []byte{}
+}
+
+// Cgi请求
+type CgiReq struct {
+	// 路由
+	Route *Route `protobuf:"bytes,1,req,name=Route" json:"Route,omitempty"`
+	// 方法
+	Method *string `protobuf:"bytes,2,req,name=Method" json:"Method,omitempty"`
+	// 接口
+	Path *string `protobuf:"bytes,3,req,name=Path" json:"Path,omitempty"`
+	// 路径
+	Uri *string `protobuf:"bytes,4,req,name=Uri" json:"Uri,omitempty"`
+	// 地址
+	Addr *string `protobuf:"bytes,5,req,name=Addr" json:"Addr,omitempty"`
+	// 头部
+	Header []byte `protobuf:"bytes,6,req,name=Header" json:"Header,omitempty"`
+	// 参数
+	Query []byte `protobuf:"bytes,7,opt,name=Query" json:"Query,omitempty"`
+	// 长度
+	Length *int64 `protobuf:"varint,8,req,name=Length" json:"Length,omitempty"`
+	// 数据
+	Body                 []byte   `protobuf:"bytes,9,opt,name=Body" json:"Body,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *CgiReq) Reset()         { return }
+func (m *CgiReq) String() string { return "" }
+func (*CgiReq) ProtoMessage()    { return }
+func (*CgiReq) Descriptor() ([]byte, []int) {
+	return []byte{}, []int{}
+}
+func (m *CgiReq) XXX_Unmarshal(b []byte) error {
+	return nil
+}
+func (m *CgiReq) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return []byte{}, nil
+}
+func (m *CgiReq) XXX_Merge(src proto.Message) {
+	return
+}
+func (m *CgiReq) XXX_Size() int {
+	return 0
+}
+func (m *CgiReq) XXX_DiscardUnknown() {
+	return
+}
+func (m *CgiReq) GetRoute() *Route {
+	return nil
+}
+func (m *CgiReq) GetMethod() string {
 	return ""
 }
-func (m *MapUrl) GetUrl2() string {
+func (m *CgiReq) GetPath() string {
 	return ""
 }
-func (m *MapUrl) GetUrl3() string {
+func (m *CgiReq) GetUri() string {
 	return ""
 }
-func (m *MapUrl) GetUrl4() string {
+func (m *CgiReq) GetAddr() string {
 	return ""
 }
-func (m *MapUrl) GetUrl5() string {
-	return ""
+func (m *CgiReq) GetHeader() []byte {
+	return []byte{}
 }
-func (m *MapUrl) GetUrl6() string {
-	return ""
+func (m *CgiReq) GetQuery() []byte {
+	return []byte{}
 }
-func (m *MapUrl) GetUrl7() string {
-	return ""
+func (m *CgiReq) GetLength() int64 {
+	return 0
 }
-func (m *MapUrl) GetUrl8() string {
-	return ""
+func (m *CgiReq) GetBody() []byte {
+	return []byte{}
 }
-func (m *MapUrl) GetUrl9() string {
-	return ""
+
+// Cgi响应
+type CgiResp struct {
+	// 路由
+	Route *Route `protobuf:"bytes,1,req,name=Route" json:"Route,omitempty"`
+	// 状态
+	Status *int32 `protobuf:"varint,2,opt,name=Status" json:"Status,omitempty"`
+	// 返回头部
+	Header []byte `protobuf:"bytes,3,opt,name=Header" json:"Header,omitempty"`
+	// 长度
+	Length *int64 `protobuf:"varint,4,opt,name=Length" json:"Length,omitempty"`
+	// 数据
+	Body                 []byte   `protobuf:"bytes,5,opt,name=Body" json:"Body,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *CgiResp) Reset()         { return }
+func (m *CgiResp) String() string { return "" }
+func (*CgiResp) ProtoMessage()    { return }
+func (*CgiResp) Descriptor() ([]byte, []int) {
+	return []byte{}, []int{}
+}
+func (m *CgiResp) XXX_Unmarshal(b []byte) error {
+	return nil
+}
+func (m *CgiResp) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return []byte{}, nil
+}
+func (m *CgiResp) XXX_Merge(src proto.Message) {
+	return
+}
+func (m *CgiResp) XXX_Size() int {
+	return 0
+}
+func (m *CgiResp) XXX_DiscardUnknown() {
+	return
+}
+func (m *CgiResp) GetRoute() *Route {
+	return nil
+}
+func (m *CgiResp) GetStatus() int32 {
+	return 0
+}
+func (m *CgiResp) GetHeader() []byte {
+	return []byte{}
+}
+func (m *CgiResp) GetLength() int64 {
+	return 0
+}
+func (m *CgiResp) GetBody() []byte {
+	return []byte{}
 }
 func init() {
 	return
