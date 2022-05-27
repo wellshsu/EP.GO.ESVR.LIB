@@ -7,19 +7,41 @@ import (
 )
 
 var (
-	GRpc = xevt.NewEvtMgr(false)
 	GMsg = xevt.NewEvtMgr(true)
+	GRpc = xevt.NewEvtMgr(false)
+	GCgi = xevt.NewEvtMgr(false)
 	GEvt = xevt.NewEvtMgr(true)
 )
 
-type RpcFunc func(reply *xevt.EvtReply, frame *xmsg.Frame)
+type MsgFunc func(*xmsg.MsgReq)
 
-func (this RpcFunc) Handle(reply *xevt.EvtReply, receiver interface{}, param interface{}) {
+func (this MsgFunc) Handle(reply *xevt.EvtReply, param1 interface{}, param2 interface{}) {
+	return
+}
+
+// 注册Msg消息（用于客户端和服务器之间交互）（全局）
+func RegMsg(id int, fun func(*xmsg.MsgReq)) int {
+	return 0
+}
+
+// 注销Msg消息（用于客户端和服务器之间交互）（全局）
+func UnregMsg(id int, hid int) bool {
+	return false
+}
+
+// 广播Msg消息（用于客户端和服务器之间交互）（全局）
+func NotifyMsg(id int, mreq *xmsg.MsgReq) bool {
+	return false
+}
+
+type RpcFunc func(rreq *xmsg.RpcReq, rresp *xmsg.RpcResp)
+
+func (this RpcFunc) Handle(reply *xevt.EvtReply, param1 interface{}, param2 interface{}) {
 	return
 }
 
 // 注册Rpc消息（用于服务器之间交互）（全局）
-func RegRpc(id int, fun func(reply *xevt.EvtReply, frame *xmsg.Frame)) int {
+func RegRpc(id int, fun func(rreq *xmsg.RpcReq, rresp *xmsg.RpcResp)) int {
 	return 0
 }
 
@@ -29,28 +51,28 @@ func UnregRpc(id int, hid int) bool {
 }
 
 // 广播Rpc消息（用于服务器之间交互）（全局）
-func NotifyRpc(id int, reply *xevt.EvtReply, param interface{}) bool {
+func NotifyRpc(id int, req *xmsg.RpcReq, resp *xmsg.RpcResp) bool {
 	return false
 }
 
-type MsgFunc func(*xmsg.Frame)
+type CgiFunc func(req *xmsg.CgiReq, resp *xmsg.CgiResp)
 
-func (this MsgFunc) Handle(reply *xevt.EvtReply, receiver interface{}, param interface{}) {
+func (this CgiFunc) Handle(reply *xevt.EvtReply, req interface{}, resp interface{}) {
 	return
 }
 
-// 注册Msg消息（用于客户端和服务器或者服务器之间交互）（全局）
-func RegMsg(id int, fun func(*xmsg.Frame)) int {
+// 注册Cgi消息（用于客户端和服务器之间交互）（全局）
+func RegCgi(id int, fun func(req *xmsg.CgiReq, resp *xmsg.CgiResp)) int {
 	return 0
 }
 
-// 注销Msg消息（用于客户端和服务器或者服务器之间交互）（全局）
-func UnregMsg(id int, hid int) bool {
+// 注销Cgi消息（用于客户端和服务器之间交互）（全局）
+func UnregCgi(id int, hid int) bool {
 	return false
 }
 
-// 广播Msg消息（用于客户端和服务器或者服务器之间交互）（全局）
-func NotifyMsg(id int, frame *xmsg.Frame) bool {
+// 广播Cgi消息（用于客户端和服务器之间交互）（全局）
+func NotifyCgi(id int, req *xmsg.CgiReq, resp *xmsg.CgiResp) bool {
 	return false
 }
 

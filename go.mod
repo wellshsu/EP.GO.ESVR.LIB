@@ -1,6 +1,6 @@
 module github.com/hsu2017/EP.GO.ESVR.LIB
 
-go 1.17
+go 1.18
 
 require (
 	github.com/go-sql-driver/mysql v1.6.0
@@ -12,6 +12,7 @@ require (
 	github.com/v2pro/plz v0.0.0-20200805122259-422184e41b6e
 	golang.org/x/net v0.0.0-20220516155154-20f960328961
 	golang.org/x/sys v0.0.0-20220513210249-45d2b4557a2a
+	google.golang.org/protobuf v1.26.0
 	nanomsg.org/go-mangos v1.4.0
 )
 
@@ -29,5 +30,4 @@ require (
 	github.com/mattn/go-isatty v0.0.12 // indirect
 	github.com/mitchellh/go-homedir v1.1.0 // indirect
 	github.com/mitchellh/mapstructure v1.1.2 // indirect
-	google.golang.org/protobuf v1.26.0 // indirect
 )
