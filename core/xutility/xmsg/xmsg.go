@@ -26,7 +26,8 @@ const (
 )
 
 var (
-	GUrl string = ""
+	GUrl  string  = ""  // 当前线路地址
+	PGUrl *string = nil // 当前线路地址（指针）
 )
 
 // 设置全局url
@@ -63,24 +64,6 @@ func PackProto(obj proto.Message) []byte {
 func UnpackProto(data []byte, obj proto.Message) error {
 	return nil
 }
-func NewLoopReq() *LoopReq {
-	return nil
-}
-func NewMsgReq() *MsgReq {
-	return nil
-}
-func NewRpcReq() *RpcReq {
-	return nil
-}
-func NewRpcResp() *RpcResp {
-	return nil
-}
-func NewCgiReq() *CgiReq {
-	return nil
-}
-func NewCgiResp() *CgiResp {
-	return nil
-}
 
 // 封装GID（l-左区间，r-右区间，皆为闭区间）
 func PackGID(l int, r int) int {
@@ -103,6 +86,16 @@ func UnpackFrame(bytes []byte) (byte, IFrame, error) {
 }
 
 // 转换网络帧（src和dst互换）
-func ShiftFrame(frame IFrame) IFrame {
+func ShiftFrame(src IFrame) IFrame {
 	return nil
+}
+
+// 拷贝网络帧
+func CloneFrame(frame IFrame) IFrame {
+	return nil
+}
+
+// 缓存网络帧
+func PoolFrame(frame IFrame) {
+	return
 }

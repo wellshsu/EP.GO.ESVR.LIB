@@ -141,7 +141,7 @@ func (bl *BeeLogger) writeToLoggers(when time.Time, msg string, level int) {
 func (bl *BeeLogger) Write(p []byte) (n int, err error) {
 	return n, err
 }
-func (bl *BeeLogger) writeMsg(logLevel int, msg string, v ...interface{}) error {
+func (bl *BeeLogger) WriteMsg(logLevel int, msg string, v ...interface{}) error {
 	return nil
 }
 
@@ -365,6 +365,6 @@ func Debug(f interface{}, v ...interface{}) {
 func Trace(f interface{}, v ...interface{}) {
 	return
 }
-func formatLog(f interface{}, v ...interface{}) string {
+func Format(f interface{}, v ...interface{}) string {
 	return ""
 }

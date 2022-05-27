@@ -23,12 +23,14 @@ func init() {
 				resp := &protocol.RPC_GetOnlineFromConnResp{}
 				xserver.SendSync(int(protocol.RID.RPC_GET_ONLINE_FROM_CONN), 0, nil, resp, conn.ServerID())
 				for idx, id := range resp.ID {
-					playerID := int(id)
-					playerUrl := resp.Url[idx]
-					player := ReadPlayer(playerID)
+					uid := int(id)
+					url := resp.Url[idx]
+					cid := resp.CID[idx]
+					player := ReadPlayer(uid)
 					if player != nil {
 						player.Online = 1
-						player.ConnUrl = playerUrl
+						player.ConnUrl = url
+						player.ConnID = cid
 					}
 				}
 			}

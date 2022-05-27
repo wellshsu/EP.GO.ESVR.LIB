@@ -14,7 +14,7 @@ import (
 func init() {
 	xserver.RegMsg(int(protocol.MID.GM_LOGIN_REQUEST), HandleLogin)
 	xserver.RegRpc(int(protocol.RID.RPC_CONN_NOTIFY_OFFLINE), HandleLogout)
-	xserver.RegCgi(int(protocol.CID.LOGIN_REQUEST), HandleCgi)
+	xserver.RegCgi(int(protocol.CID.HELLO_WORLD), HandleCgi)
 }
 
 func HandleLogin(mreq *xmsg.MsgReq) {
@@ -39,11 +39,11 @@ func HandleLogin(mreq *xmsg.MsgReq) {
 
 func HandleLogout(rreq *xmsg.RpcReq, rresp *xmsg.RpcResp) {
 	req := &protocol.RPC_ConnNotifyOfflineReq{}
-	if xmsg.UnpackProto(rreq.Data, req) != nil {
+	if xmsg.UnpackMsg(rreq.Data, req) != nil {
 		return
 	}
-	playerID := int(req.GetUID())
-	player := ReadPlayer(playerID)
+	uid := int(req.GetUID())
+	player := ReadPlayer(uid)
 	if player != nil {
 		player.OnLogout(req, rreq)
 	}

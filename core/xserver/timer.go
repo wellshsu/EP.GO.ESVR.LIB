@@ -41,6 +41,7 @@ type TimerEntity struct {
 	Crash   bool
 	RW      bool
 	Tag     interface{}
+	Log     int
 }
 
 // 设置会话的可读性（默认为可读可写）
@@ -50,6 +51,11 @@ func (this *TimerEntity) SetRW(sig bool) *TimerEntity {
 
 // 设置会话的标签
 func (this *TimerEntity) SetTag(tag interface{}) *TimerEntity {
+	return nil
+}
+
+// 设置会话的日志层级
+func (this *TimerEntity) SetLog(log int) *TimerEntity {
 	return nil
 }
 func procStart(proc *Proc) {

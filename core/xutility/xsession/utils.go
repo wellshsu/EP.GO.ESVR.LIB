@@ -9,7 +9,6 @@ import (
 	_ "strings"
 	"sync"
 
-	_ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xlog"
 	"github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xorm"
 	_ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xrun"
 	_ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xruntime"

@@ -6,7 +6,6 @@ import (
 	_ "sync/atomic"
 	_ "time"
 
-	_ "github.com/golang/protobuf/proto"
 	_ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xlog"
 	"github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xmsg"
 	_ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xrun"
@@ -23,8 +22,8 @@ var (
 )
 
 type Proc struct {
-	TID   int64
-	Num   int
+	TID   int64            // 线路的GoID
+	Num   int              // 线路线程总数
 	CIN   chan xmsg.IFrame // 输入队列
 	COUT  chan xmsg.IFrame // 输出队列
 	Loop  bool

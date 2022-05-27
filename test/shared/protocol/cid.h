@@ -2,5 +2,5 @@
 
 enum CID
 {
-    LOGIN_REQUEST, //    <tag>path:"/login" to:"hall" go:"0" rw:"1" method:"GET,POST" timeout:"-1"</tag>
+    HELLO_WORLD, //    <tag>path:"/hello/world" to:"hall" go:"0" rw:"1" method:"GET,POST" timeout:"-1"</tag>
 };

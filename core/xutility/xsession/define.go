@@ -2,8 +2,10 @@
 package xsession
 
 import (
+	_ "fmt"
 	_ "sync"
 
+	_ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xlog"
 	"github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xorm"
 )
 
@@ -41,17 +43,12 @@ type PipeObject struct {
 	SRedis  bool
 	Cond    *xorm.Condition
 }
-type ProfilerRecord struct {
-	Tag  interface{}
-	Time int
-	RW   bool
-	Log  bool
-}
 type PipeRecord struct {
-	ID      int64
-	Tag     interface{}
-	Time    int
-	Objects []*PipeObject
+	ID       int64
+	Tag      interface{}
+	Time     int
+	Objects  []*PipeObject
+	Profiler *ProfilerRecord
 }
 type DeleteRecord struct {
 	Chan  chan bool
@@ -62,4 +59,59 @@ type Session struct {
 	ID       int
 	TID      int
 	Profiler *ProfilerRecord
+}
+type ProfilerRecord struct {
+	Tag  interface{}
+	Time int
+	RW   bool
+	Log  int
+	TID  int64
+	SID  int64
+}
+
+func (this *ProfilerRecord) Reset() {
+	return
+}
+func (this *ProfilerRecord) LogPrefix() string {
+	return ""
+}
+
+// Debug(7) > Info(6) > Notice(5) > Warn(4) > Error(3) > Critical(2) > Alert(1) > Emergency(0)
+func (this *ProfilerRecord) GLogEmergency(f interface{}, v ...interface{}) {
+	return
+}
+
+// Debug(7) > Info(6) > Notice(5) > Warn(4) > Error(3) > Critical(2) > Alert(1) > Emergency(0)
+func (this *ProfilerRecord) GLogAlert(f interface{}, v ...interface{}) {
+	return
+}
+
+// Debug(7) > Info(6) > Notice(5) > Warn(4) > Error(3) > Critical(2) > Alert(1) > Emergency(0)
+func (this *ProfilerRecord) GLogCritical(f interface{}, v ...interface{}) {
+	return
+}
+
+// Debug(7) > Info(6) > Notice(5) > Warn(4) > Error(3) > Critical(2) > Alert(1) > Emergency(0)
+func (this *ProfilerRecord) GLogError(f interface{}, v ...interface{}) {
+	return
+}
+
+// Debug(7) > Info(6) > Notice(5) > Warn(4) > Error(3) > Critical(2) > Alert(1) > Emergency(0)
+func (this *ProfilerRecord) GLogWarn(f interface{}, v ...interface{}) {
+	return
+}
+
+// Debug(7) > Info(6) > Notice(5) > Warn(4) > Error(3) > Critical(2) > Alert(1) > Emergency(0)
+func (this *ProfilerRecord) GLogNotice(f interface{}, v ...interface{}) {
+	return
+}
+
+// Debug(7) > Info(6) > Notice(5) > Warn(4) > Error(3) > Critical(2) > Alert(1) > Emergency(0)
+func (this *ProfilerRecord) GLogInfo(f interface{}, v ...interface{}) {
+	return
+}
+
+// Debug(7) > Info(6) > Notice(5) > Warn(4) > Error(3) > Critical(2) > Alert(1) > Emergency(0)
+func (this *ProfilerRecord) GLogDebug(f interface{}, v ...interface{}) {
+	return
 }

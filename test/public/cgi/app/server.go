@@ -7,6 +7,8 @@ import (
 	"github.com/hsu2017/EP.GO.ESVR.LIB/core/xserver"
 	"github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xhttp"
 	"github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xjson"
+	"github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xmsg"
+	"github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xrun"
 	"github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xstring"
 )
 
@@ -56,6 +58,7 @@ func NewCgiServer() *CgiServer {
 								resp.WriteHeader(503)
 								resp.Write(xstring.StrToBytes(err.Error()))
 							} else {
+								defer xmsg.PoolFrame(cresp)
 								header := make(map[string]string)
 								xjson.ToObj(cresp.Header, &header)
 								for k := range header {
@@ -67,8 +70,10 @@ func NewCgiServer() *CgiServer {
 						}
 					}
 				}
-			}).
-			Start()
+			})
+		go xrun.Exec(func() {
+			this.Svr.Start()
+		})
 	})
 	return this
 }
