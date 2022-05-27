@@ -19,9 +19,12 @@ import (
 )
 
 var (
-	ERR_SEND_CHAN_FULL = errors.New("send chan is full")
-	ERR_DO_RPC_TIMEOUT = errors.New("do rpc timeout")
-	ERR_NO_ROUTE_FOUND = errors.New("no route found")
+	ERR_SEND_CHAN_FULL  = errors.New("send chan is full")
+	ERR_NO_ROUTE_FOUND  = errors.New("no route found")
+	ERR_RPC_TIMEOUT     = errors.New("rpc call timeout")
+	ERR_CGI_TIMEOUT     = errors.New("cgi call timeout")
+	ERR_RPC_INTERRUPTED = errors.New("rpc call has been interrupted, see log context for more details.")
+	ERR_CGI_INTERRUPTED = errors.New("cgi call has been interrupted, see log context for more details.")
 )
 
 func pushFrame(goNum int) {

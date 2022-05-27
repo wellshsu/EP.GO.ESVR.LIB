@@ -24,23 +24,30 @@ func NewPlayer(md ...*mmn.Player) *Player {
 	return this
 }
 
-func (this *Player) Send(id protocol.MIDEnum, data proto.Message, mreq *xmsg.MsgReq) {
-	nmreq := xmsg.NewMsgReq()
-	nmreq.Route.UID = proto.Int(this.ID)
-	nmreq.Route.Src = proto.String(xmsg.GUrl)
-	nmreq.Route.Dst = proto.String(this.ConnUrl)
-	nmreq.Route.MID1 = mreq.Route.MID1
+func (this *Player) Send(id protocol.MIDEnum, data proto.Message, mreq ...*xmsg.MsgReq) {
+	var nmreq *xmsg.MsgReq
+	if len(mreq) == 1 {
+		nmreq = mreq[0]
+	} else {
+		nmreq = xmsg.GetMsgReq()
+		nmreq.Route.UID = proto.Int(this.ID)
+		nmreq.Route.RID = proto.Int(int(id))
+		nmreq.Route.Src = proto.String(xmsg.GUrl)
+		nmreq.Route.Dst = proto.String(this.ConnUrl)
+		nmreq.Route.MID1 = proto.Int64(this.ConnID)
+	}
 	xserver.SendMsg(int(id), data, nmreq)
 }
 
 func (this *Player) OnLogin(req *protocol.GM_LoginReq, mreq *xmsg.MsgReq) {
 	this.Online = 1
-	if this.ConnUrl != mreq.Route.GetSrc() { // 网关
-		if this.ConnUrl != "" {
-			this.Send(protocol.MID.GM_LOGIN_RESPONSE, &protocol.GM_Common{Result: proto.Int(0)}, mreq)
+	if this.ConnUrl != mreq.Route.GetSrc() && this.ConnID != mreq.Route.GetMID1() { // 网关
+		if this.ConnUrl != "" && this.ConnID != -1 {
+			this.Send(protocol.MID.GM_KICK_OFF, &protocol.GM_Common{Result: proto.Int(0)})
 		}
 	}
 	this.ConnUrl = mreq.Route.GetSrc()
+	this.ConnID = mreq.Route.GetMID1()
 	mreq.Route.UID = proto.Int(this.ID)
 
 	resp := &protocol.GM_LoginResp{}
@@ -50,11 +57,10 @@ func (this *Player) OnLogin(req *protocol.GM_LoginReq, mreq *xmsg.MsgReq) {
 }
 
 func (this *Player) OnLogout(req *protocol.RPC_ConnNotifyOfflineReq, rreq *xmsg.RpcReq) {
-	playerUrl := req.GetUrl()
-	if this.ConnUrl != playerUrl {
-		xlog.Warn("ctx.Player.OnLogout: player-%v's oldurl-%v doesn't equals to newurl-%v", this.ID, playerUrl, this.ConnUrl)
+	if this.ConnUrl != req.GetUrl() && this.ConnID != req.GetCID() {
+		xlog.Warn("ctx.Player.OnLogout: player-%v's oldurl-%v#%v doesn't equals to newurl-%v#%v", this.ID, this.ConnUrl, this.ConnID, req.GetUrl(), req.GetCID())
 	} else {
-		xlog.Info("ctx.Player.OnLogout: player-%v offline, url-%v", this.ID, this.ConnUrl)
+		xlog.Info("ctx.Player.OnLogout: player-%v offline, url-%v#%v", this.ID, this.ConnUrl, this.ConnID)
 		this.Online = 0
 	}
 }

@@ -52,7 +52,7 @@ func NewConnServer() *ConnServer {
 			SetMaxBody(this.MaxBody).SetTimeout(this.Timeout).
 			SetOnAccept(func(client xconn.IClient) {
 				gclient := client.(*ConnClient)
-				gclient.Url = fmt.Sprintf("%v#%v", svrID, gclient.GetID())
+				gclient.Url = svrID
 			}).
 			SetOnRemove(func(client xconn.IClient) {
 				gclient := client.(*ConnClient)
@@ -78,6 +78,7 @@ func NewConnServer() *ConnServer {
 			if client.UID != -1 {
 				resp.ID = append(resp.ID, int32(client.UID))
 				resp.Url = append(resp.Url, client.Url)
+				resp.CID = append(resp.CID, int64(client.ID))
 			}
 			return true
 		})
@@ -124,7 +125,7 @@ func (this *ConnServer) ToClient(frame *xmsg.MsgReq) {
 }
 
 func (this *ConnServer) ToServer(client *ConnClient, rid int, dst string, bytes []byte, gol int, gor int) bool {
-	frame := xmsg.NewMsgReq()
+	frame := xmsg.GetMsgReq()
 	frame.Route.Src = proto.String(client.Url)
 	frame.Route.Dst = proto.String(dst)
 	frame.Route.RID = proto.Int(rid)
@@ -142,6 +143,7 @@ func (this *ConnServer) RemoveClient(client *ConnClient) {
 			req := &protocol.RPC_ConnNotifyOfflineReq{}
 			req.UID = proto.Int(client.UID)
 			req.Url = proto.String(client.Url)
+			req.CID = proto.Int64(int64(client.ID))
 			xserver.SendAsync(int(protocol.RID.RPC_CONN_NOTIFY_OFFLINE), client.UID, req, hall.ServerID(), nil)
 		}
 		client.UID = -1

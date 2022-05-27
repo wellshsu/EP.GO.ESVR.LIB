@@ -5,7 +5,6 @@ import (
 	_ "reflect"
 
 	_ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xcollect"
-	_ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xlog"
 	"github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xorm"
 )
 

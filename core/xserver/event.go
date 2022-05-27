@@ -7,10 +7,10 @@ import (
 )
 
 var (
-	GMsg = xevt.NewEvtMgr(true)
-	GRpc = xevt.NewEvtMgr(false)
-	GCgi = xevt.NewEvtMgr(false)
-	GEvt = xevt.NewEvtMgr(true)
+	GMsg = xevt.NewEvtMgr(true)  // Msg消息中心
+	GRpc = xevt.NewEvtMgr(false) // Rpc消息中心
+	GCgi = xevt.NewEvtMgr(false) // Cgi消息中心
+	GEvt = xevt.NewEvtMgr(true)  // Evt消息中心
 )
 
 type MsgFunc func(*xmsg.MsgReq)

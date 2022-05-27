@@ -19,6 +19,7 @@ import (
 const (
 	EVT_SERVER_STARTED = -1 // 服务就绪（配置就绪 & 日志就绪 & DB就绪 & Redis就绪 & Lan就绪）
 	EVT_SERVER_CHANGED = -2 // 服务变更（参数类型：[]interface{}{added map[string][]string, removed map[string][]string}）
+	EVT_SERVER_PREQUIT = -3 // 服务即将退出
 )
 
 type IServer interface {
@@ -32,7 +33,7 @@ type IServer interface {
 	GetConfig() *SvrCfg                             // 获取配置
 	UpdateTitle() string                            // 更新标题
 	RecvMsg(mreq *xmsg.MsgReq)                      // 接收Msg消息
-	RecvRPC(rreq *xmsg.RpcReq, rresp *xmsg.RpcResp) // 接收Rpc消息
+	RecvRpc(rreq *xmsg.RpcReq, rresp *xmsg.RpcResp) // 接收Rpc消息
 	RecvCgi(creq *xmsg.CgiReq, cresp *xmsg.CgiResp) // 接收Cgi消息
 }
 type Server struct {
@@ -89,7 +90,7 @@ func (this *Server) RecvMsg(mreq *xmsg.MsgReq) {
 }
 
 // 接收Rpc消息
-func (this *Server) RecvRPC(rreq *xmsg.RpcReq, rresp *xmsg.RpcResp) {
+func (this *Server) RecvRpc(rreq *xmsg.RpcReq, rresp *xmsg.RpcResp) {
 	return
 }
 
