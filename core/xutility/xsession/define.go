@@ -44,10 +44,11 @@ type PipeObject struct {
 	Cond    *xorm.Condition
 }
 type PipeRecord struct {
-	ID      int64
-	Tag     interface{}
-	Time    int
-	Objects []*PipeObject
+	ID       int64
+	Tag      interface{}
+	Time     int
+	Objects  []*PipeObject
+	Profiler *ProfilerRecord
 }
 type DeleteRecord struct {
 	Chan  chan bool
