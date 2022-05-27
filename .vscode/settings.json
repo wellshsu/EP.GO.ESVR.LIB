@@ -15,13 +15,13 @@
     },
     "ecode-go.targetList": [
         {
-            "name": "gate",
+            "name": "conn",
             "arch": "amd64",
             "os": "windows",
             "icon": "conf/icon.ico",
-            "src_path": "test/gate",
+            "src_path": "test/public/conn",
             "build_arg": "",
-            "build_path": "exec",
+            "build_path": "exec/public",
             "build_copy": [
                 "conf/*"
             ],
@@ -29,13 +29,13 @@
             "stop_delay": 0.3
         },
         {
-            "name": "gate",
+            "name": "conn",
             "arch": "amd64",
             "os": "linux",
             "icon": "conf/icon.ico",
-            "src_path": "test/gate",
-            "build_arg": "-a -work",
-            "build_path": "exec",
+            "src_path": "test/public/conn",
+            "build_arg": "",
+            "build_path": "exec/public",
             "build_copy": [
                 "conf/*"
             ],
@@ -43,13 +43,55 @@
             "stop_delay": 0.3
         },
         {
-            "name": "gate",
+            "name": "conn",
             "arch": "amd64",
             "os": "darwin",
             "icon": "conf/icon.ico",
-            "src_path": "test/gate",
-            "build_arg": "-a -work",
-            "build_path": "exec",
+            "src_path": "test/public/conn",
+            "build_arg": "",
+            "build_path": "exec/public",
+            "build_copy": [
+                "conf/*"
+            ],
+            "start_delay": 0.5,
+            "stop_delay": 0.3
+        },
+        {
+            "name": "cgi",
+            "arch": "amd64",
+            "os": "windows",
+            "icon": "conf/icon.ico",
+            "src_path": "test/public/cgi",
+            "build_arg": "",
+            "build_path": "exec/public",
+            "build_copy": [
+                "conf/*"
+            ],
+            "start_delay": 0.5,
+            "stop_delay": 0.3
+        },
+        {
+            "name": "cgi",
+            "arch": "amd64",
+            "os": "linux",
+            "icon": "conf/icon.ico",
+            "src_path": "test/public/cgi",
+            "build_arg": "",
+            "build_path": "exec/public",
+            "build_copy": [
+                "conf/*"
+            ],
+            "start_delay": 0.5,
+            "stop_delay": 0.3
+        },
+        {
+            "name": "cgi",
+            "arch": "amd64",
+            "os": "darwin",
+            "icon": "conf/icon.ico",
+            "src_path": "test/public/cgi",
+            "build_arg": "",
+            "build_path": "exec/public",
             "build_copy": [
                 "conf/*"
             ],
@@ -61,9 +103,9 @@
             "arch": "amd64",
             "os": "windows",
             "icon": "conf/icon.ico",
-            "src_path": "test/hall",
-            "build_arg": "-a -work",
-            "build_path": "exec",
+            "src_path": "test/private/hall",
+            "build_arg": "",
+            "build_path": "exec/private",
             "build_copy": [
                 "conf/*"
             ],
@@ -75,9 +117,9 @@
             "arch": "amd64",
             "os": "linux",
             "icon": "conf/icon.ico",
-            "src_path": "test/hall",
-            "build_arg": "-a -work",
-            "build_path": "exec",
+            "src_path": "test/private/hall",
+            "build_arg": "",
+            "build_path": "exec/private",
             "build_copy": [
                 "conf/*"
             ],
@@ -89,9 +131,9 @@
             "arch": "amd64",
             "os": "darwin",
             "icon": "conf/icon.ico",
-            "src_path": "test/hall",
-            "build_arg": "-a -work",
-            "build_path": "exec",
+            "src_path": "test/private/hall",
+            "build_arg": "",
+            "build_path": "exec/private",
             "build_copy": [
                 "conf/*"
             ],

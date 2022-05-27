@@ -40,6 +40,6 @@ func (this *LanSvr) SelectAll(svr string) []*LanClt {
 func (this *LanSvr) SelectRand(svr string) *LanClt {
 	return nil
 }
-func (this *LanSvr) SendMsg(svr string, bytes []byte, idx int) error {
+func (this *LanSvr) SendData(svr string, bytes []byte, idx int) error {
 	return nil
 }

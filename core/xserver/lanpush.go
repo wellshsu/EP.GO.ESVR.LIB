@@ -4,16 +4,17 @@ package xserver
 import (
 	"errors"
 	_ "fmt"
+	"net/http"
 	_ "time"
 
 	"github.com/golang/protobuf/proto"
+	_ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xjson"
 	_ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xlog"
 	_ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xmath"
 	"github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xmsg"
 	_ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xrun"
 	_ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xruntime"
 	_ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xsession"
-	_ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xstring"
 	_ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xtime"
 )
 
@@ -23,14 +24,19 @@ var (
 	ERR_NO_ROUTE_FOUND = errors.New("no route found")
 )
 
-func pushMsg(goNum int) {
+func pushFrame(goNum int) {
 	return
 }
-func doRpc(id int, uid int, req interface{}, addr string, offsetAndTimeout ...int) (*xmsg.Frame, error) {
+
+// [发送网络帧（根据UID负载均衡）]
+func SendFrame(frame xmsg.IFrame) bool {
+	return false
+}
+func doRpc(rid int, uid int, req interface{}, addr string, offsetAndTimeout ...int) (*xmsg.RpcResp, error) {
 	return nil, nil
 }
 
-// [发送消息（同步），用于各服务间通讯]
+// [发送Rpc消息（同步）]
 // [id-消息ID]
 // [uid-用户ID]
 // [req-请求结构体]
@@ -42,7 +48,7 @@ func SendSync(id int, uid int, req proto.Message, resp proto.Message, addr strin
 	return nil
 }
 
-// [发送消息（异步），用于各服务间通讯]
+// [发送Rpc消息（异步）]
 // [id-消息ID]
 // [uid-用户ID]
 // [req-请求结构体]
@@ -50,19 +56,23 @@ func SendSync(id int, uid int, req proto.Message, resp proto.Message, addr strin
 // [callback-回调函数]
 // [offset-目标协程ID偏移（基于protocol中定义）]
 // [timeout-超时时长]
-func SendAsync(id int, uid int, req proto.Message, addr string, callback func(frame *xmsg.Frame, err error), offsetAndTimeout ...int) {
+func SendAsync(id int, uid int, req proto.Message, addr string, callback func(frame *xmsg.RpcResp, err error), offsetAndTimeout ...int) {
 	return
 }
 
-// [发送消息，用于各服务间通讯]
+// [发送Msg消息]
 // [id-消息ID]
 // [msg-结构体]
-// [frame-网络帧]
-func SendMsg(id int, msg proto.Message, frame *xmsg.Frame) bool {
+// [mreq-msg帧]
+func SendMsg(id int, msg proto.Message, mreq *xmsg.MsgReq) bool {
 	return false
 }
 
-// [发送网络帧，用于各服务间通讯]
-func SendFrame(frame *xmsg.Frame) bool {
-	return false
+// [发送Cgi消息（同步，否则ResponseWriter无法输出）]
+// [id-消息ID]
+// [req-请求结构体]
+// [addr-目标服务器]
+// [timeout-超时时长]
+func SendCgi(id int, req *http.Request, addr string, timeout ...int) (cresp *xmsg.CgiResp, err error) {
+	return cresp, err
 }

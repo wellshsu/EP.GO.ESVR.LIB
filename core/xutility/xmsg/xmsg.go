@@ -2,12 +2,14 @@
 package xmsg
 
 import (
+	_ "errors"
 	_ "fmt"
 	_ "math"
 
-	_ "github.com/golang/protobuf/proto"
+	"github.com/golang/protobuf/proto"
 	_ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xlog"
 	_ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xmath"
+	_ "google.golang.org/protobuf/proto"
 )
 
 const (
@@ -32,47 +34,75 @@ func SetGUrl(url string) {
 	return
 }
 
-// 解析消息ID
-func ParseID(buf []byte) int {
+// 解析消息ID（for msg）
+func UnpackID(buf []byte) int {
 	return 0
 }
 
-// 解析用户ID
-func ParseUID(buf []byte) int {
+// 解析用户ID（for msg）
+func UnpackUID(buf []byte) int {
 	return 0
 }
 
-// 解析网络帧
-func ParseFrame(frame *Frame, out interface{}) error {
+// 解析消息（for msg）
+func UnpackMsg(buf []byte, out interface{}) error {
 	return nil
 }
 
-// 解析消息
-func ParseMsg(buf []byte, out interface{}) error {
-	return nil
-}
-
-// 封装消息
+// 封装消息（for msg）
 func PackMsg(id int, in interface{}) ([]byte, error) {
 	return []byte{}, nil
 }
 
-// 转换网络帧（src和dest互换）
-func ShiftFrame(frame *Frame) *Frame {
+// 封装protobuf
+func PackProto(obj proto.Message) []byte {
+	return []byte{}
+}
+
+// 解析protobuf
+func UnpackProto(data []byte, obj proto.Message) error {
+	return nil
+}
+func NewLoopReq() *LoopReq {
+	return nil
+}
+func NewMsgReq() *MsgReq {
+	return nil
+}
+func NewRpcReq() *RpcReq {
+	return nil
+}
+func NewRpcResp() *RpcResp {
+	return nil
+}
+func NewCgiReq() *CgiReq {
+	return nil
+}
+func NewCgiResp() *CgiResp {
 	return nil
 }
 
-// 使用dest和uid构建一个简易的网络帧
-func SimpleFrame(dest string, uid int) *Frame {
-	return nil
-}
-
-// 封装GoID（l-左区间，r-右区间，皆为闭区间）
-func PackGo(l int, r int) int {
+// 封装GID（l-左区间，r-右区间，皆为闭区间）
+func PackGID(l int, r int) int {
 	return 0
 }
 
-// 解析GoID（l-左区间，r-右区间，皆为闭区间）
-func ParseGo(g int) (l, r int) {
+// 解析GID（l-左区间，r-右区间，皆为闭区间）
+func UnpackGID(g int) (l, r int) {
 	return l, r
+}
+
+// 封装网络帧
+func PackFrame(frame IFrame) ([]byte, error) {
+	return []byte{}, nil
+}
+
+// 解析网络帧
+func UnpackFrame(bytes []byte) (byte, IFrame, error) {
+	return 0, nil, nil
+}
+
+// 转换网络帧（src和dst互换）
+func ShiftFrame(frame IFrame) IFrame {
+	return nil
 }

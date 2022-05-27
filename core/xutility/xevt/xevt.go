@@ -49,6 +49,6 @@ func (this *EvtMgr) Reg(id int, handler IHandler) int {
 func (this *EvtMgr) Unreg(id int, hid int) bool {
 	return false
 }
-func (this *EvtMgr) Notify(id int, reply *EvtReply, receiver interface{}, param interface{}) bool {
+func (this *EvtMgr) Notify(id int, reply *EvtReply, param1 interface{}, param2 interface{}) bool {
 	return false
 }

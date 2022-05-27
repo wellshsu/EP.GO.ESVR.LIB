@@ -7,7 +7,6 @@ import (
 	_ "net/url"
 	_ "time"
 
-	"github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xevt"
 	_ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xfs"
 	_ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xjson"
 	_ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xlog"
@@ -18,7 +17,9 @@ import (
 	_ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xtime"
 )
 
-func StartLan(lanCfg *LanCfg, handleRpc func(*xevt.EvtReply, *xmsg.Frame), handleMsg func(*xmsg.Frame)) {
+func StartLan(lanCfg *LanCfg, handleMsg func(*xmsg.MsgReq),
+	handleRpc func(*xmsg.RpcReq, *xmsg.RpcResp),
+	handleCgi func(*xmsg.CgiReq, *xmsg.CgiResp)) {
 	return
 }
 func RecvLan() {

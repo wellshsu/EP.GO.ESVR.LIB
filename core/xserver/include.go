@@ -6,6 +6,7 @@ import (
 	_ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xconn"
 	_ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xevt"
 	_ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xfs"
+	_ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xhttp"
 	_ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xjson"
 	_ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xlog"
 	_ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xmath"
