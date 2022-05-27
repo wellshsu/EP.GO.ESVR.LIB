@@ -10,6 +10,6 @@ import (
 )
 
 // 分配一个推送管道（多线程）
-func allocPipe(tid int64, log int, prefix string) chan *PipeRecord {
+func allocPipe(tid int64, tag interface{}, log int, prefix string) chan *PipeRecord {
 	return nil
 }
