@@ -54,7 +54,7 @@ func NewCgiServer() *CgiServer {
 							resp.WriteHeader(502)
 							resp.Write(xstring.StrToBytes(fmt.Sprintf("no lan for route %v, path %v", route.Dst[0], req.URL.Path)))
 						} else {
-							if cresp, err := xserver.SendCgi(route.ID, req, lan.ServerID(), 10); err != nil {
+							if cresp, err := xserver.SendCgi(route.ID, 0, req, lan.ServerID(), 10); err != nil {
 								resp.WriteHeader(503)
 								resp.Write(xstring.StrToBytes(err.Error()))
 							} else {
@@ -85,6 +85,6 @@ func (this *CgiServer) InitConfig() bool {
 	config := this.GetConfig()
 	this.Address = config.Raw.String("client::addr")
 	this.Key = config.Raw.DefaultString("client::key", "")
-	this.Cert = config.Raw.DefaultString("client::crt", "")
+	this.Cert = config.Raw.DefaultString("client::cert", "")
 	return true
 }

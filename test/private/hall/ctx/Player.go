@@ -53,7 +53,7 @@ func (this *Player) OnLogin(req *protocol.GM_LoginReq, mreq *xmsg.MsgReq) {
 	resp := &protocol.GM_LoginResp{}
 	resp.ID = proto.Int(this.ID)
 	resp.Status = proto.Int(this.Online)
-	this.Send(protocol.MID.GM_LOGIN_RESPONSE, resp, mreq)
+	this.Send(protocol.MID.GM_LOGIN_RESPONSE, resp)
 }
 
 func (this *Player) OnLogout(req *protocol.RPC_ConnNotifyOfflineReq, rreq *xmsg.RpcReq) {
