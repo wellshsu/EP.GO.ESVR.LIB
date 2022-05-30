@@ -45,6 +45,11 @@ func UnpackUID(buf []byte) int {
 	return 0
 }
 
+// 解析服务器ID（for msg）
+func UnpackSID(buf []byte) int {
+	return 0
+}
+
 // 解析消息（for msg）
 func UnpackMsg(buf []byte, out interface{}) error {
 	return nil
