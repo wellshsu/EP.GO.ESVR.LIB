@@ -54,10 +54,12 @@ func initmid() {
 			} else {
 				route.RW = true
 			}
+			route.Log = -1
 			if _log != "" {
-				route.Log = _log == "1"
-			} else {
-				route.Log = true
+				tmp, _ := strconv.Atoi(_log)
+				if tmp >= 0 && tmp <= 7 {
+					route.Log = tmp
+				}
 			}
 			_id := tfld.Tag.Get("id")
 			id, _ := strconv.Atoi(_id)
@@ -107,10 +109,12 @@ func initrid() {
 			} else {
 				route.RW = true
 			}
+			route.Log = -1
 			if _log != "" {
-				route.Log = _log == "1"
-			} else {
-				route.Log = true
+				tmp, _ := strconv.Atoi(_log)
+				if tmp >= 0 && tmp <= 7 {
+					route.Log = tmp
+				}
 			}
 			_id := tfld.Tag.Get("id")
 			id, _ := strconv.Atoi(_id)
@@ -167,10 +171,12 @@ func initcid() {
 			} else {
 				route.RW = true
 			}
+			route.Log = -1
 			if _log != "" {
-				route.Log = _log == "1"
-			} else {
-				route.Log = true
+				tmp, _ := strconv.Atoi(_log)
+				if tmp >= 0 && tmp <= 7 {
+					route.Log = tmp
+				}
 			}
 			route.Method = strings.Split(tfld.Tag.Get("method"), ",")
 			_id := tfld.Tag.Get("id")

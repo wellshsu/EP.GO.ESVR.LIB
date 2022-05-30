@@ -20,6 +20,8 @@ type LanCfg struct {
 func NewLanCfg(name, addr string) *LanCfg {
 	return nil
 }
+
+// 服务器ID（$name@tcp://$ip:$port）
 func (this *LanCfg) ServerID() string {
 	return ""
 }

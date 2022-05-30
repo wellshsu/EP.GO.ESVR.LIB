@@ -11,7 +11,7 @@ import (
 )
 
 const (
-	MAX_CHAN_LEN = 100000
+	MAX_CHAN_LEN = 300000
 )
 
 type LogCfg struct {

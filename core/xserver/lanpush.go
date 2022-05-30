@@ -19,9 +19,12 @@ import (
 )
 
 var (
-	ERR_SEND_CHAN_FULL = errors.New("send chan is full")
-	ERR_DO_RPC_TIMEOUT = errors.New("do rpc timeout")
-	ERR_NO_ROUTE_FOUND = errors.New("no route found")
+	ERR_SEND_CHAN_FULL  = errors.New("send chan is full")
+	ERR_NO_ROUTE_FOUND  = errors.New("no route found")
+	ERR_RPC_TIMEOUT     = errors.New("rpc call timeout")
+	ERR_CGI_TIMEOUT     = errors.New("cgi call timeout")
+	ERR_RPC_INTERRUPTED = errors.New("rpc call has been interrupted, see log context for more details.")
+	ERR_CGI_INTERRUPTED = errors.New("cgi call has been interrupted, see log context for more details.")
 )
 
 func pushFrame(goNum int) {
@@ -38,7 +41,7 @@ func doRpc(rid int, uid int, req interface{}, addr string, offsetAndTimeout ...i
 
 // [发送Rpc消息（同步）]
 // [id-消息ID]
-// [uid-用户ID]
+// [uid-用户ID（负载均衡）]
 // [req-请求结构体]
 // [resp-返回结构体]
 // [addr-目标服务器]
@@ -50,7 +53,7 @@ func SendSync(id int, uid int, req proto.Message, resp proto.Message, addr strin
 
 // [发送Rpc消息（异步）]
 // [id-消息ID]
-// [uid-用户ID]
+// [uid-用户ID（负载均衡）]
 // [req-请求结构体]
 // [addr-目标服务器]
 // [callback-回调函数]
@@ -70,9 +73,10 @@ func SendMsg(id int, msg proto.Message, mreq *xmsg.MsgReq) bool {
 
 // [发送Cgi消息（同步，否则ResponseWriter无法输出）]
 // [id-消息ID]
+// [uid-用户ID（负载均衡）]
 // [req-请求结构体]
 // [addr-目标服务器]
 // [timeout-超时时长]
-func SendCgi(id int, req *http.Request, addr string, timeout ...int) (cresp *xmsg.CgiResp, err error) {
+func SendCgi(id int, uid int, req *http.Request, addr string, timeout ...int) (cresp *xmsg.CgiResp, err error) {
 	return cresp, err
 }

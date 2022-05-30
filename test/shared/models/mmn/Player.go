@@ -13,7 +13,8 @@ type Player struct {
 	Account    string `orm:"column(account)"`  // 账号
 	Password   string `orm:"column(password)"` // 密码
 	Online     int    `orm:"column(online)"`   // 0-不在线 1-在线
-	ConnUrl    string `orm:"column(conn_url)"` // 网关地址
+	ConnUrl    string `orm:"column(conn_url)"` // 连接地址
+	ConnID     int64  `orm:"column(conn_id)"`  // 连接ID
 }
 
 func RegPlayer() *Player {

@@ -57,6 +57,7 @@ func (FrameType) EnumDescriptor() ([]byte, []int) {
 	return []byte{}, []int{}
 }
 
+// 帧路由（请不要保持对其的引用，随时可能被重置）
 type Route struct {
 	// 源地址
 	Src *string `protobuf:"bytes,1,req,name=Src" json:"Src,omitempty"`
@@ -73,11 +74,11 @@ type Route struct {
 	// 用户ID
 	UID *int32 `protobuf:"varint,7,opt,name=UID,def=-1" json:"UID,omitempty"`
 	// reserved ID1
-	MID1 *int64 `protobuf:"varint,8,opt,name=MID1" json:"MID1,omitempty"`
+	MID1 *int64 `protobuf:"varint,8,opt,name=MID1,def=-1" json:"MID1,omitempty"`
 	// reserved ID2
-	MID2 *int64 `protobuf:"varint,9,opt,name=MID2" json:"MID2,omitempty"`
+	MID2 *int64 `protobuf:"varint,9,opt,name=MID2,def=-1" json:"MID2,omitempty"`
 	// reserved ID3
-	MID3 *int64 `protobuf:"varint,10,opt,name=MID3" json:"MID3,omitempty"`
+	MID3 *int64 `protobuf:"varint,10,opt,name=MID3,def=-1" json:"MID3,omitempty"`
 	// reserved Url1
 	MUrl1 *string `protobuf:"bytes,11,opt,name=MUrl1" json:"MUrl1,omitempty"`
 	// reserved Url2
@@ -113,6 +114,9 @@ func (m *Route) XXX_DiscardUnknown() {
 
 const Default_Route_GID int32 = -1
 const Default_Route_UID int32 = -1
+const Default_Route_MID1 int64 = -1
+const Default_Route_MID2 int64 = -1
+const Default_Route_MID3 int64 = -1
 
 func (m *Route) GetSrc() string {
 	return ""
@@ -154,7 +158,7 @@ func (m *Route) GetMUrl3() string {
 	return ""
 }
 
-// Loop请求
+// Loop请求（请不要保持对其的引用，随时可能被重置）
 type LoopReq struct {
 	Route                *Route   `protobuf:"bytes,1,opt,name=Route" json:"Route,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
@@ -187,7 +191,7 @@ func (m *LoopReq) GetRoute() *Route {
 	return nil
 }
 
-// Msg请求
+// Msg请求（请不要保持对其的引用，随时可能被重置）
 type MsgReq struct {
 	// 路由
 	Route *Route `protobuf:"bytes,1,req,name=Route" json:"Route,omitempty"`
@@ -226,7 +230,7 @@ func (m *MsgReq) GetData() []byte {
 	return []byte{}
 }
 
-// Rpc请求
+// Rpc请求（请不要保持对其的引用，随时可能被重置）
 type RpcReq struct {
 	// 路由
 	Route *Route `protobuf:"bytes,1,req,name=Route" json:"Route,omitempty"`
@@ -265,7 +269,7 @@ func (m *RpcReq) GetData() []byte {
 	return []byte{}
 }
 
-// Rpc响应
+// Rpc响应（请不要保持对其的引用，随时可能被重置）
 type RpcResp struct {
 	// 路由
 	Route *Route `protobuf:"bytes,1,req,name=Route" json:"Route,omitempty"`
@@ -304,7 +308,7 @@ func (m *RpcResp) GetData() []byte {
 	return []byte{}
 }
 
-// Cgi请求
+// Cgi请求（请不要保持对其的引用，随时可能被重置）
 type CgiReq struct {
 	// 路由
 	Route *Route `protobuf:"bytes,1,req,name=Route" json:"Route,omitempty"`
@@ -378,7 +382,7 @@ func (m *CgiReq) GetBody() []byte {
 	return []byte{}
 }
 
-// Cgi响应
+// Cgi响应（请不要保持对其的引用，随时可能被重置）
 type CgiResp struct {
 	// 路由
 	Route *Route `protobuf:"bytes,1,req,name=Route" json:"Route,omitempty"`

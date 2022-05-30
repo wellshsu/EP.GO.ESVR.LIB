@@ -14,7 +14,6 @@ import (
 )
 
 type LanClt struct {
-	Clear bool
 	*LanCfg
 	Sockets []mangos.Socket
 }

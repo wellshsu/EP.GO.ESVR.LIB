@@ -7,6 +7,8 @@ import (
 	"github.com/hsu2017/EP.GO.ESVR.LIB/core/xserver"
 	"github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xhttp"
 	"github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xjson"
+	"github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xmsg"
+	"github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xrun"
 	"github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xstring"
 )
 
@@ -52,10 +54,11 @@ func NewCgiServer() *CgiServer {
 							resp.WriteHeader(502)
 							resp.Write(xstring.StrToBytes(fmt.Sprintf("no lan for route %v, path %v", route.Dst[0], req.URL.Path)))
 						} else {
-							if cresp, err := xserver.SendCgi(route.ID, req, lan.ServerID(), 10); err != nil {
+							if cresp, err := xserver.SendCgi(route.ID, 0, req, lan.ServerID(), 10); err != nil {
 								resp.WriteHeader(503)
 								resp.Write(xstring.StrToBytes(err.Error()))
 							} else {
+								defer xmsg.PoolFrame(cresp)
 								header := make(map[string]string)
 								xjson.ToObj(cresp.Header, &header)
 								for k := range header {
@@ -67,8 +70,10 @@ func NewCgiServer() *CgiServer {
 						}
 					}
 				}
-			}).
-			Start()
+			})
+		go xrun.Exec(func() {
+			this.Svr.Start()
+		})
 	})
 	return this
 }
@@ -80,6 +85,6 @@ func (this *CgiServer) InitConfig() bool {
 	config := this.GetConfig()
 	this.Address = config.Raw.String("client::addr")
 	this.Key = config.Raw.DefaultString("client::key", "")
-	this.Cert = config.Raw.DefaultString("client::crt", "")
+	this.Cert = config.Raw.DefaultString("client::cert", "")
 	return true
 }

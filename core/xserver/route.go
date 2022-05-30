@@ -1,15 +1,23 @@
 //go:binary-only-package
 package xserver
 
+import _ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xlog"
+
 type Route struct {
-	ID   int
-	Name string
-	GoL  int
-	GoR  int
-	RW   bool
-	Log  bool
-	Dst  []string
+	ID   int      // 路由ID
+	Name string   // 路由名称
+	GoL  int      // 协程ID（左）
+	GoR  int      //协程ID（右）
+	RW   bool     // 可读可写（默认true）
+	Log  int      // 日志层级（参考xlog的LogLevel）
+	Dst  []string // 目标
 }
+
+// 获取日志层级，若未指定则使用全局日志层级
+func (this *Route) GetLog() int {
+	return 0
+}
+
 type MsgRoute struct {
 	Route
 }

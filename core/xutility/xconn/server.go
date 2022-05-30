@@ -3,7 +3,7 @@ package xconn
 
 import (
 	"net"
-	_ "net/http"
+	"net/http"
 	"sync"
 	_ "sync/atomic"
 	_ "time"
@@ -18,16 +18,20 @@ const (
 )
 
 type Server struct {
-	Addr      string // 前端连接地址
-	IsWS      bool   // 是否面向WebSocket连接（默认true）
-	MaxConn   int    // 最大连接数（超过该值将不再接收新的连接）（默认5000）
-	MaxLoad   int    // 单连接每秒最大的请求数（超过该值则视为DDOS，主动断开连接）（默认100QPS）
-	MaxBody   int    // 单连接最大的消息体（不包含头部）（默认1024 * 1024 = 1048576）
-	Timeout   int    // 连接超时时间（超过该值则主动断开连接）（默认15秒）
-	ChClose   chan bool
-	Clients   sync.Map // map[int]IClient
-	Pool      sync.Pool
-	OnlineNum int64
+	Addr      string       // 前端连接地址
+	IsWS      bool         // 是否面向WebSocket连接（默认true）
+	Key       string       // WebSocket密钥
+	Cert      string       // WebSocket证书
+	WSServer  *http.Server // WebSocket服务
+	MaxConn   int          // 最大连接数（超过该值将不再接收新的连接）（默认5000）
+	MaxLoad   int          // 单连接每秒最大的请求数（超过该值则视为DDOS，主动断开连接）（默认100QPS）
+	MaxBody   int          // 单连接最大的消息体（不包含头部）（默认1024 * 1024 = 1048576）
+	Timeout   int          // 连接超时时间（超过该值则主动断开连接）（默认15秒）
+	ChClose   chan bool    // 服务关闭标识
+	Clients   sync.Map     // map[int]IClient
+	Pool      sync.Pool    // IClient缓存池
+	OnlineNum int64        // 当前在线数量
+	// 当前最大ID
 	NewClient func() interface{}    // 连接对象构造
 	OnAccept  func(IClient)         // 接收到新连接
 	OnRemove  func(IClient)         // 移除一个连接
@@ -43,8 +47,11 @@ func (this *Server) SetAddr(addr string) *Server {
 	return nil
 }
 
-// 是否面向WebSocket连接（默认true）
-func (this *Server) SetIsWS(ws bool) *Server {
+// 是否面向WebSocket连接（默认true，若未设置key和cert则使用http监听）
+// 生成密钥：openssl genrsa -out server.key 2048
+// 生成证书：openssl req -new -x509 -key server.key -out server.crt -days 365
+// 参数说明：Common Name = localhost/domain/ip
+func (this *Server) SetIsWS(ws bool, key string, cert string) *Server {
 	return nil
 }
 

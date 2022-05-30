@@ -4,7 +4,6 @@ package xsession
 import (
 	_ "sync"
 
-	_ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xlog"
 	"github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xorm"
 )
 

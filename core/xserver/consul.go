@@ -18,13 +18,13 @@ import (
 )
 
 const (
-	CONSUL_RESP_OK    = "ok"
-	CONSUL_CHECK_PATH = "/check"
+	CONSUL_RESP_OK    = "ok"     // Consul响应200
+	CONSUL_CHECK_PATH = "/check" // Consul心跳检测
 )
 
 var (
-	CslClt *consulapi.Client
-	CslCfg *consulapi.Config
+	CslClt *consulapi.Client // Consul连接
+	CslCfg *consulapi.Config // Consul配置
 )
 
 func startConsul(onUpdate func(map[string][]string)) {
@@ -42,12 +42,18 @@ func unregConsul(nodeID string) error {
 func pullConsul(url string, servers string, onUpdate func(map[string][]string)) {
 	return
 }
+
+// 推送KV（键值对）至Consul Storage（version-版本号，以'VERSION_'为前缀，block-是否阻塞）
 func PostKV(key string, value string, version string, block ...bool) bool {
 	return false
 }
+
+// 从Consul Storage中拉取KV（键值对）（阻塞）
 func PullKV(key string) []byte {
 	return []byte{}
 }
-func UpdateKV(key string, interval int, onUpdate func(data []byte)) {
+
+// 订阅Consul Storage中的KV（键值对）（阻塞）（interval-间歇时间）（注意订阅的Key需要设置版本，以'VERSION_'为前缀）
+func SubKV(key string, interval int, onUpdate func(data []byte)) {
 	return
 }
