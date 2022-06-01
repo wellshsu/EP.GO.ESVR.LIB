@@ -13,134 +13,185 @@
         "exec": true,
         "pkg": true
     },
-    "ecode-go.targetList": [
-        {
-            "name": "conn",
-            "arch": "amd64",
-            "os": "windows",
-            "icon": "conf/icon.ico",
-            "src_path": "test/public/conn",
-            "build_arg": "",
-            "build_path": "exec/public",
-            "build_copy": [
-                "conf/*"
-            ],
-            "start_delay": 0.5,
-            "stop_delay": 0.3
+    "ecode-go.targetList": {
+        "conn": {
+            "common": {
+                "arch": "amd64",
+                "os": "windows",
+                "icon": "conf/icon.ico",
+                "src_path": "test/public/conn",
+                "build_arg": "",
+                "build_path": "exec/public",
+                "build_copy": [
+                    "conf/*"
+                ],
+                "start_delay": 0.5,
+                "stop_delay": 0.3
+            },
+            "debug.windows.amd64": {
+                "base": "common",
+                "arch": "amd64",
+                "os": "windows"
+            },
+            "release.windows.amd64": {
+                "base": "common",
+                "arch": "amd64",
+                "os": "windows",
+                "build_arg": "-a"
+            },
+            "debug.linux.amd64": {
+                "base": "common",
+                "arch": "amd64",
+                "os": "linux"
+            },
+            "release.linux.amd64": {
+                "base": "common",
+                "arch": "amd64",
+                "os": "linux",
+                "build_arg": "-a"
+            },
+            "debug.darwin.amd64": {
+                "base": "common",
+                "arch": "amd64",
+                "os": "windows"
+            },
+            "release.darwin.amd64": {
+                "base": "common",
+                "arch": "amd64",
+                "os": "darwin",
+                "build_arg": "-a"
+            },
+            "debug.darwin.arm64": {
+                "base": "common",
+                "arch": "arm64",
+                "os": "darwin"
+            },
+            "release.darwin.arm64": {
+                "base": "common",
+                "arch": "arm64",
+                "os": "darwin",
+                "build_arg": "-a"
+            }
         },
-        {
-            "name": "conn",
-            "arch": "amd64",
-            "os": "linux",
-            "icon": "conf/icon.ico",
-            "src_path": "test/public/conn",
-            "build_arg": "",
-            "build_path": "exec/public",
-            "build_copy": [
-                "conf/*"
-            ],
-            "start_delay": 0.5,
-            "stop_delay": 0.3
+        "cgi": {
+            "common": {
+                "arch": "amd64",
+                "os": "windows",
+                "icon": "conf/icon.ico",
+                "src_path": "test/public/cgi",
+                "build_arg": "",
+                "build_path": "exec/public",
+                "build_copy": [
+                    "conf/*"
+                ],
+                "start_delay": 0.5,
+                "stop_delay": 0.3
+            },
+            "debug.windows.amd64": {
+                "base": "common",
+                "arch": "amd64",
+                "os": "windows"
+            },
+            "release.windows.amd64": {
+                "base": "common",
+                "arch": "amd64",
+                "os": "windows",
+                "build_arg": "-a"
+            },
+            "debug.linux.amd64": {
+                "base": "common",
+                "arch": "amd64",
+                "os": "linux"
+            },
+            "release.linux.amd64": {
+                "base": "common",
+                "arch": "amd64",
+                "os": "linux",
+                "build_arg": "-a"
+            },
+            "debug.darwin.amd64": {
+                "base": "common",
+                "arch": "amd64",
+                "os": "windows"
+            },
+            "release.darwin.amd64": {
+                "base": "common",
+                "arch": "amd64",
+                "os": "darwin",
+                "build_arg": "-a"
+            },
+            "debug.darwin.arm64": {
+                "base": "common",
+                "arch": "arm64",
+                "os": "darwin"
+            },
+            "release.darwin.arm64": {
+                "base": "common",
+                "arch": "arm64",
+                "os": "darwin",
+                "build_arg": "-a"
+            }
         },
-        {
-            "name": "conn",
-            "arch": "amd64",
-            "os": "darwin",
-            "icon": "conf/icon.ico",
-            "src_path": "test/public/conn",
-            "build_arg": "",
-            "build_path": "exec/public",
-            "build_copy": [
-                "conf/*"
-            ],
-            "start_delay": 0.5,
-            "stop_delay": 0.3
-        },
-        {
-            "name": "cgi",
-            "arch": "amd64",
-            "os": "windows",
-            "icon": "conf/icon.ico",
-            "src_path": "test/public/cgi",
-            "build_arg": "",
-            "build_path": "exec/public",
-            "build_copy": [
-                "conf/*"
-            ],
-            "start_delay": 0.5,
-            "stop_delay": 0.3
-        },
-        {
-            "name": "cgi",
-            "arch": "amd64",
-            "os": "linux",
-            "icon": "conf/icon.ico",
-            "src_path": "test/public/cgi",
-            "build_arg": "",
-            "build_path": "exec/public",
-            "build_copy": [
-                "conf/*"
-            ],
-            "start_delay": 0.5,
-            "stop_delay": 0.3
-        },
-        {
-            "name": "cgi",
-            "arch": "amd64",
-            "os": "darwin",
-            "icon": "conf/icon.ico",
-            "src_path": "test/public/cgi",
-            "build_arg": "",
-            "build_path": "exec/public",
-            "build_copy": [
-                "conf/*"
-            ],
-            "start_delay": 0.5,
-            "stop_delay": 0.3
-        },
-        {
-            "name": "hall",
-            "arch": "amd64",
-            "os": "windows",
-            "icon": "conf/icon.ico",
-            "src_path": "test/private/hall",
-            "build_arg": "",
-            "build_path": "exec/private",
-            "build_copy": [
-                "conf/*"
-            ],
-            "start_delay": 0.5,
-            "stop_delay": 0.3
-        },
-        {
-            "name": "hall",
-            "arch": "amd64",
-            "os": "linux",
-            "icon": "conf/icon.ico",
-            "src_path": "test/private/hall",
-            "build_arg": "",
-            "build_path": "exec/private",
-            "build_copy": [
-                "conf/*"
-            ],
-            "start_delay": 0.5,
-            "stop_delay": 0.3
-        },
-        {
-            "name": "hall",
-            "arch": "amd64",
-            "os": "darwin",
-            "icon": "conf/icon.ico",
-            "src_path": "test/private/hall",
-            "build_arg": "",
-            "build_path": "exec/private",
-            "build_copy": [
-                "conf/*"
-            ],
-            "start_delay": 0.5,
-            "stop_delay": 0.3
+        "hall": {
+            "common": {
+                "arch": "amd64",
+                "os": "windows",
+                "icon": "conf/icon.ico",
+                "src_path": "test/private/hall",
+                "build_arg": "",
+                "build_path": "exec/private",
+                "build_copy": [
+                    "conf/*"
+                ],
+                "start_delay": 0.5,
+                "stop_delay": 0.3
+            },
+            "debug.windows.amd64": {
+                "base": "common",
+                "arch": "amd64",
+                "os": "windows"
+            },
+            "release.windows.amd64": {
+                "base": "common",
+                "arch": "amd64",
+                "os": "windows",
+                "build_arg": "-a"
+            },
+            "debug.linux.amd64": {
+                "base": "common",
+                "arch": "amd64",
+                "os": "linux"
+            },
+            "release.linux.amd64": {
+                "base": "common",
+                "arch": "amd64",
+                "os": "linux",
+                "build_arg": "-a"
+            },
+            "debug.darwin.amd64": {
+                "base": "common",
+                "arch": "amd64",
+                "os": "windows"
+            },
+            "release.darwin.amd64": {
+                "base": "common",
+                "arch": "amd64",
+                "os": "darwin",
+                "build_arg": "-a"
+            },
+            "debug.darwin.arm64": {
+                "base": "common",
+                "arch": "arm64",
+                "os": "darwin"
+            },
+            "release.darwin.arm64": {
+                "base": "common",
+                "arch": "arm64",
+                "os": "darwin",
+                "build_arg": "-a"
+            }
         }
-    ],
+    },
     "ecode-go.srcList": [],
     "ecode-go.libList": []
 }
