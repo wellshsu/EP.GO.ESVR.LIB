@@ -1,3 +1,13 @@
+//---------------------------------------------------------------------//
+//                    GNU GENERAL PUBLIC LICENSE                       //
+//                       Version 2, June 1991                          //
+//                                                                     //
+// Copyright (C) Wells Hsu, wellshsu@outlook.com, All rights reserved. //
+// Everyone is permitted to copy and distribute verbatim copies        //
+// of this license document, but changing it is not allowed.           //
+//                  SEE LICENSE.md FOR MORE DETAILS.                   //
+//---------------------------------------------------------------------//
+
 package app
 
 import (
@@ -28,12 +38,19 @@ func NewCgiServer() *CgiServer {
 		this.Svr = xhttp.NewServer().
 			SetAddr(this.Address).SetHttps(this.Key, this.Cert).
 			SetHandler(func(resp http.ResponseWriter, req *http.Request) {
-				route := xserver.SCGIROUTEMAP[req.URL.Path]
+				method := req.Method
+				cid := -1
+				if method == "POST" {
+					cid = xstring.ToInt(req.Header.Get("cid"))
+				}
+				if cid == -1 {
+					cid = xstring.ToInt(req.URL.Query().Get("cid"))
+				}
+				route := xserver.CGIROUTEMAP[cid]
 				if route == nil {
 					resp.WriteHeader(500)
-					resp.Write(xstring.StrToBytes(fmt.Sprintf("no route for %v", req.URL.Path)))
+					resp.Write(xstring.StrToBytes(fmt.Sprintf("no route for cid %v", cid)))
 				} else {
-					method := req.Method
 					sig := false
 					if len(route.Method) > 0 {
 						for i := 0; i < len(route.Method); i++ {

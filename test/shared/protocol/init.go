@@ -1,7 +1,6 @@
 package protocol
 
 import (
-	"fmt"
 	"reflect"
 	"strconv"
 	"strings"
@@ -126,17 +125,11 @@ func initrid() {
 }
 
 func initcid() {
-	imap := make(map[int]*xserver.CgiRoute)
-	smap := make(map[string]*xserver.CgiRoute)
+	_map := make(map[int]*xserver.CgiRoute)
 	ttpe := reflect.TypeOf(CID)
 	numlen := ttpe.NumField()
 	for i := 0; i < numlen; i++ {
 		tfld := ttpe.Field(i)
-		path := tfld.Tag.Get("path")
-		if path == "" {
-			fmt.Println("initcgi: empty path")
-			continue
-		}
 		_dst := tfld.Tag.Get("to")
 		_gid := tfld.Tag.Get("go")
 		_rw := tfld.Tag.Get("rw")
@@ -144,7 +137,6 @@ func initcid() {
 		if _dst != "" || _gid != "" || _rw != "" {
 			route := &xserver.CgiRoute{}
 			route.Name = tfld.Name
-			route.Path = path
 			route.Dst = strings.Split(_dst, ",")
 			if _gid != "" {
 				if strings.Contains(_gid, ":") {
@@ -182,12 +174,8 @@ func initcid() {
 			_id := tfld.Tag.Get("id")
 			id, _ := strconv.Atoi(_id)
 			route.ID = id
-			imap[id] = route
-			if smap[route.Path] != nil {
-				fmt.Println(fmt.Sprintf("initcgi: dumplicated path %v", route.Path))
-			}
-			smap[route.Path] = route
+			_map[id] = route
 		}
 	}
-	xserver.RegCgiRoute(imap, smap)
+	xserver.RegCgiRoute(_map)
 }
