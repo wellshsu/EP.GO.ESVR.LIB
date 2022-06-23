@@ -1,4 +1,13 @@
 //go:binary-only-package
+//---------------------------------------------------------------------//
+//                    GNU GENERAL PUBLIC LICENSE                       //
+//                       Version 2, June 1991                          //
+//                                                                     //
+// Copyright (C) Wells Hsu, wellshsu@outlook.com, All rights reserved. //
+// Everyone is permitted to copy and distribute verbatim copies        //
+// of this license document, but changing it is not allowed.           //
+//                  SEE LICENSE.md FOR MORE DETAILS.                   //
+//---------------------------------------------------------------------//
 // TONOTE: sync.Pool的对象生命周期位于两次GC之间；
 // 实现的逻辑是绑定P，故而跨协程存取会消耗一些性能(偷缓存)；
 // 测试：CgiResp, New-53, Get-4630, 复用率>90%；

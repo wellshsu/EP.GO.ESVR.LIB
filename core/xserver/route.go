@@ -1,4 +1,13 @@
 //go:binary-only-package
+//---------------------------------------------------------------------//
+//                    GNU GENERAL PUBLIC LICENSE                       //
+//                       Version 2, June 1991                          //
+//                                                                     //
+// Copyright (C) Wells Hsu, wellshsu@outlook.com, All rights reserved. //
+// Everyone is permitted to copy and distribute verbatim copies        //
+// of this license document, but changing it is not allowed.           //
+//                  SEE LICENSE.md FOR MORE DETAILS.                   //
+//---------------------------------------------------------------------//
 package xserver
 
 import _ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xlog"
@@ -42,8 +51,7 @@ type CgiRoute struct {
 	Method []string
 }
 
-var ICGIROUTEMAP map[int]*CgiRoute    // cgi路由(id)
-var SCGIROUTEMAP map[string]*CgiRoute // cgi路由(path)
-func RegCgiRoute(imap map[int]*CgiRoute, smap map[string]*CgiRoute) {
+var CGIROUTEMAP map[int]*CgiRoute // cgi路由
+func RegCgiRoute(_map map[int]*CgiRoute) {
 	return
 }
