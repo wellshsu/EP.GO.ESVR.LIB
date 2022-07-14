@@ -14,9 +14,9 @@ import (
 	"github.com/hsu2017/EP.GO.ESVR.LIB/core/xserver"
 	"github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xlog"
 	"github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xproto"
-	"github.com/hsu2017/EP.GO.ESVR.LIB/test/shared/models/mmn"
-	"github.com/hsu2017/EP.GO.ESVR.LIB/test/shared/protos/mpb"
-	"github.com/hsu2017/EP.GO.ESVR.LIB/test/shared/protos/rpb"
+	"github.com/hsu2017/EP.GO.ESVR.LIB/test/shared/model/mmn"
+	"github.com/hsu2017/EP.GO.ESVR.LIB/test/shared/proto/mpb"
+	"github.com/hsu2017/EP.GO.ESVR.LIB/test/shared/proto/rpb"
 
 	"github.com/golang/protobuf/proto"
 )
