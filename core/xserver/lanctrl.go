@@ -19,16 +19,16 @@ import (
 	_ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xfs"
 	_ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xjson"
 	_ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xlog"
-	"github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xmsg"
+	"github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xproto"
 	_ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xrun"
 	_ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xsession"
 	_ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xstring"
 	_ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xtime"
 )
 
-func StartLan(lanCfg *LanCfg, handleMsg func(*xmsg.MsgReq),
-	handleRpc func(*xmsg.RpcReq, *xmsg.RpcResp),
-	handleCgi func(*xmsg.CgiReq, *xmsg.CgiResp)) {
+func StartLan(lanCfg *LanCfg, handleMsg func(*xproto.MsgReq),
+	handleRpc func(*xproto.RpcReq, *xproto.RpcResp),
+	handleCgi func(*xproto.CgiReq, *xproto.CgiResp)) {
 	return
 }
 func RecvLan() {

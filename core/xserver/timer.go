@@ -16,7 +16,7 @@ import (
 	"time"
 
 	_ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xlog"
-	_ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xmsg"
+	_ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xproto"
 	_ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xrun"
 	_ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xruntime"
 	_ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xsession"

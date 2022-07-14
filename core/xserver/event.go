@@ -12,7 +12,7 @@ package xserver
 
 import (
 	"github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xevt"
-	"github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xmsg"
+	"github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xproto"
 )
 
 var (
@@ -22,14 +22,14 @@ var (
 	GEvt = xevt.NewEvtMgr(true)  // Evt消息中心
 )
 
-type MsgFunc func(*xmsg.MsgReq)
+type MsgFunc func(*xproto.MsgReq)
 
 func (this MsgFunc) Handle(reply *xevt.EvtReply, param1 interface{}, param2 interface{}) {
 	return
 }
 
 // 注册Msg消息（用于客户端和服务器之间交互）（全局）
-func RegMsg(id int, fun func(*xmsg.MsgReq)) int {
+func RegMsg(id int, fun func(*xproto.MsgReq)) int {
 	return 0
 }
 
@@ -39,18 +39,18 @@ func UnregMsg(id int, hid int) bool {
 }
 
 // 广播Msg消息（用于客户端和服务器之间交互）（全局）
-func NotifyMsg(id int, mreq *xmsg.MsgReq) bool {
+func NotifyMsg(id int, mreq *xproto.MsgReq) bool {
 	return false
 }
 
-type RpcFunc func(rreq *xmsg.RpcReq, rresp *xmsg.RpcResp)
+type RpcFunc func(rreq *xproto.RpcReq, rresp *xproto.RpcResp)
 
 func (this RpcFunc) Handle(reply *xevt.EvtReply, param1 interface{}, param2 interface{}) {
 	return
 }
 
 // 注册Rpc消息（用于服务器之间交互）（全局）
-func RegRpc(id int, fun func(rreq *xmsg.RpcReq, rresp *xmsg.RpcResp)) int {
+func RegRpc(id int, fun func(rreq *xproto.RpcReq, rresp *xproto.RpcResp)) int {
 	return 0
 }
 
@@ -60,18 +60,18 @@ func UnregRpc(id int, hid int) bool {
 }
 
 // 广播Rpc消息（用于服务器之间交互）（全局）
-func NotifyRpc(id int, req *xmsg.RpcReq, resp *xmsg.RpcResp) bool {
+func NotifyRpc(id int, req *xproto.RpcReq, resp *xproto.RpcResp) bool {
 	return false
 }
 
-type CgiFunc func(req *xmsg.CgiReq, resp *xmsg.CgiResp)
+type CgiFunc func(req *xproto.CgiReq, resp *xproto.CgiResp)
 
 func (this CgiFunc) Handle(reply *xevt.EvtReply, req interface{}, resp interface{}) {
 	return
 }
 
 // 注册Cgi消息（用于客户端和服务器之间交互）（全局）
-func RegCgi(id int, fun func(req *xmsg.CgiReq, resp *xmsg.CgiResp)) int {
+func RegCgi(id int, fun func(req *xproto.CgiReq, resp *xproto.CgiResp)) int {
 	return 0
 }
 
@@ -81,7 +81,7 @@ func UnregCgi(id int, hid int) bool {
 }
 
 // 广播Cgi消息（用于客户端和服务器之间交互）（全局）
-func NotifyCgi(id int, req *xmsg.CgiReq, resp *xmsg.CgiResp) bool {
+func NotifyCgi(id int, req *xproto.CgiReq, resp *xproto.CgiResp) bool {
 	return false
 }
 

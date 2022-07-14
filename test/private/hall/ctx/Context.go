@@ -15,7 +15,7 @@ import (
 	"github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xorm"
 	"github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xsession"
 	"github.com/hsu2017/EP.GO.ESVR.LIB/test/shared/models/mmn"
-	"github.com/hsu2017/EP.GO.ESVR.LIB/test/shared/protocol"
+	"github.com/hsu2017/EP.GO.ESVR.LIB/test/shared/protos/rpb"
 )
 
 func init() {
@@ -30,8 +30,8 @@ func init() {
 		conns := xserver.GLan.SelectAll("conn")
 		if conns != nil {
 			for _, conn := range conns {
-				resp := &protocol.RPC_GetOnlineFromConnResp{}
-				xserver.SendSync(int(protocol.RID.RPC_GET_ONLINE_FROM_CONN), 0, nil, resp, conn.ServerID())
+				resp := &rpb.RPC_GetOnlineFromConnResp{}
+				xserver.SendSync(int(rpb.RID.RPC_GET_ONLINE_FROM_CONN), 0, nil, resp, conn.ServerID())
 				for idx, id := range resp.ID {
 					uid := int(id)
 					url := resp.Url[idx]
