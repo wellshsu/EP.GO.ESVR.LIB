@@ -16,7 +16,7 @@ import (
 	"net"
 
 	_ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xmath"
-	_ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xmsg"
+	_ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xproto"
 )
 
 const (

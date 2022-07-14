@@ -16,10 +16,10 @@ import (
 	_ "time"
 
 	_ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xlog"
-	"github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xmsg"
 	"github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xobj"
 	_ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xorm"
 	_ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xos"
+	"github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xproto"
 	_ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xrun"
 	_ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xsession"
 	_ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xtime"
@@ -32,18 +32,18 @@ const (
 )
 
 type IServer interface {
-	Init() bool                                     // 初始化
-	Start()                                         // 服务启动
-	Update(delta float32)                           // 服务循环
-	Destroy()                                       // 服务结束
-	PreQuit()                                       // 服务即将退出
-	Name() string                                   // 服务名称
-	InitConfig() bool                               // 读取配置
-	GetConfig() *SvrCfg                             // 获取配置
-	UpdateTitle() string                            // 更新标题
-	RecvMsg(mreq *xmsg.MsgReq)                      // 接收Msg消息
-	RecvRpc(rreq *xmsg.RpcReq, rresp *xmsg.RpcResp) // 接收Rpc消息
-	RecvCgi(creq *xmsg.CgiReq, cresp *xmsg.CgiResp) // 接收Cgi消息
+	Init() bool                                         // 初始化
+	Start()                                             // 服务启动
+	Update(delta float32)                               // 服务循环
+	Destroy()                                           // 服务结束
+	PreQuit()                                           // 服务即将退出
+	Name() string                                       // 服务名称
+	InitConfig() bool                                   // 读取配置
+	GetConfig() *SvrCfg                                 // 获取配置
+	UpdateTitle() string                                // 更新标题
+	RecvMsg(mreq *xproto.MsgReq)                        // 接收Msg消息
+	RecvRpc(rreq *xproto.RpcReq, rresp *xproto.RpcResp) // 接收Rpc消息
+	RecvCgi(creq *xproto.CgiReq, cresp *xproto.CgiResp) // 接收Cgi消息
 }
 type Server struct {
 	xobj.OBJECT
@@ -94,16 +94,16 @@ func (this *Server) UpdateTitle() string {
 }
 
 // 接收Msg消息
-func (this *Server) RecvMsg(mreq *xmsg.MsgReq) {
+func (this *Server) RecvMsg(mreq *xproto.MsgReq) {
 	return
 }
 
 // 接收Rpc消息
-func (this *Server) RecvRpc(rreq *xmsg.RpcReq, rresp *xmsg.RpcResp) {
+func (this *Server) RecvRpc(rreq *xproto.RpcReq, rresp *xproto.RpcResp) {
 	return
 }
 
 // 接收Cgi消息
-func (this *Server) RecvCgi(rreq *xmsg.CgiReq, rresp *xmsg.CgiResp) {
+func (this *Server) RecvCgi(rreq *xproto.CgiReq, rresp *xproto.CgiResp) {
 	return
 }

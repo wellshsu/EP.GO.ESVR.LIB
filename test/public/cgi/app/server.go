@@ -1,3 +1,13 @@
+//---------------------------------------------------------------------//
+//                    GNU GENERAL PUBLIC LICENSE                       //
+//                       Version 2, June 1991                          //
+//                                                                     //
+// Copyright (C) Wells Hsu, wellshsu@outlook.com, All rights reserved. //
+// Everyone is permitted to copy and distribute verbatim copies        //
+// of this license document, but changing it is not allowed.           //
+//                  SEE LICENSE.md FOR MORE DETAILS.                   //
+//---------------------------------------------------------------------//
+
 package app
 
 import (
@@ -7,7 +17,7 @@ import (
 	"github.com/hsu2017/EP.GO.ESVR.LIB/core/xserver"
 	"github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xhttp"
 	"github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xjson"
-	"github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xmsg"
+	"github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xproto"
 	"github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xrun"
 	"github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xstring"
 )
@@ -28,44 +38,58 @@ func NewCgiServer() *CgiServer {
 		this.Svr = xhttp.NewServer().
 			SetAddr(this.Address).SetHttps(this.Key, this.Cert).
 			SetHandler(func(resp http.ResponseWriter, req *http.Request) {
-				route := xserver.SCGIROUTEMAP[req.URL.Path]
-				if route == nil {
-					resp.WriteHeader(500)
-					resp.Write(xstring.StrToBytes(fmt.Sprintf("no route for %v", req.URL.Path)))
+				method := req.Method
+				if method == "OPTIONS" { // preflight request
+					resp.Header().Add("Access-Control-Allow-Origin", "*")
+					resp.Header().Add("Access-Control-Allow-Headers", "*")
+					resp.Header().Add("Access-Control-Allow-Methods", "PUT,POST,GET,DELETE,OPTIONS")
+					resp.WriteHeader(200)
 				} else {
-					method := req.Method
-					sig := false
-					if len(route.Method) > 0 {
-						for i := 0; i < len(route.Method); i++ {
-							if route.Method[i] == method {
-								sig = true
-								break
-							}
-						}
-					} else {
-						sig = true
+					cid := -1
+					_cid := req.Header.Get("CID")
+					if _cid == "" {
+						_cid = req.URL.Query().Get("CID")
 					}
-					if sig == false {
-						resp.WriteHeader(501)
-						resp.Write(xstring.StrToBytes(fmt.Sprintf("invalid method %v, path %v", req.Method, req.URL.Path)))
+					cid = xstring.ToInt(_cid)
+					route := xserver.CGIROUTEMAP[cid]
+					if route == nil {
+						resp.WriteHeader(500)
+						resp.Write(xstring.StrToBytes(fmt.Sprintf("no route for cid %v", cid)))
 					} else {
-						lan := xserver.GLan.SelectRand(route.Dst[0])
-						if lan == nil {
-							resp.WriteHeader(502)
-							resp.Write(xstring.StrToBytes(fmt.Sprintf("no lan for route %v, path %v", route.Dst[0], req.URL.Path)))
-						} else {
-							if cresp, err := xserver.SendCgi(route.ID, 0, req, lan.ServerID(), 10); err != nil {
-								resp.WriteHeader(503)
-								resp.Write(xstring.StrToBytes(err.Error()))
-							} else {
-								defer xmsg.PoolFrame(cresp)
-								header := make(map[string]string)
-								xjson.ToObj(cresp.Header, &header)
-								for k := range header {
-									resp.Header().Set(k, header[k])
+						sig := false
+						if len(route.Method) > 0 {
+							for i := 0; i < len(route.Method); i++ {
+								if route.Method[i] == method {
+									sig = true
+									break
 								}
-								resp.WriteHeader(int(cresp.GetStatus()))
-								resp.Write(cresp.GetBody())
+							}
+						} else {
+							sig = true
+						}
+						if sig == false {
+							resp.WriteHeader(501)
+							resp.Write(xstring.StrToBytes(fmt.Sprintf("invalid method %v, path %v", req.Method, req.URL.Path)))
+						} else {
+							lan := xserver.GLan.SelectRand(route.Dst[0])
+							if lan == nil {
+								resp.WriteHeader(502)
+								resp.Write(xstring.StrToBytes(fmt.Sprintf("no lan for route %v, path %v", route.Dst[0], req.URL.Path)))
+							} else {
+								if cresp, err := xserver.SendCgi(route.ID, 0, req, lan.ServerID(), route.Timeout); err != nil {
+									resp.WriteHeader(503)
+									resp.Write(xstring.StrToBytes(err.Error()))
+								} else {
+									defer xproto.PoolFrame(cresp)
+									header := make(map[string]string)
+									xjson.ToObj(cresp.Header, &header)
+									for k := range header {
+										resp.Header().Set(k, header[k])
+									}
+									resp.Header().Add("Access-Control-Allow-Origin", "*")
+									resp.WriteHeader(int(cresp.GetStatus()))
+									resp.Write(cresp.GetBody())
+								}
 							}
 						}
 					}

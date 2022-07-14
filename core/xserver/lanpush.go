@@ -20,7 +20,7 @@ import (
 	_ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xjson"
 	_ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xlog"
 	_ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xmath"
-	"github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xmsg"
+	"github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xproto"
 	_ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xrun"
 	_ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xruntime"
 	_ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xsession"
@@ -41,10 +41,10 @@ func pushFrame(goNum int) {
 }
 
 // [发送网络帧（根据UID负载均衡）]
-func SendFrame(frame xmsg.IFrame) bool {
+func SendFrame(frame xproto.IFrame) bool {
 	return false
 }
-func doRpc(rid int, uid int, req interface{}, addr string, offsetAndTimeout ...int) (*xmsg.RpcResp, error) {
+func doRpc(rid int, uid int, req interface{}, addr string, offsetAndTimeout ...int) (*xproto.RpcResp, error) {
 	return nil, nil
 }
 
@@ -68,7 +68,7 @@ func SendSync(id int, uid int, req proto.Message, resp proto.Message, addr strin
 // [callback-回调函数]
 // [offset-目标协程ID偏移（基于protocol中定义）]
 // [timeout-超时时长]
-func SendAsync(id int, uid int, req proto.Message, addr string, callback func(frame *xmsg.RpcResp, err error), offsetAndTimeout ...int) {
+func SendAsync(id int, uid int, req proto.Message, addr string, callback func(frame *xproto.RpcResp, err error), offsetAndTimeout ...int) {
 	return
 }
 
@@ -76,7 +76,7 @@ func SendAsync(id int, uid int, req proto.Message, addr string, callback func(fr
 // [id-消息ID]
 // [msg-结构体]
 // [mreq-msg帧]
-func SendMsg(id int, msg proto.Message, mreq *xmsg.MsgReq) bool {
+func SendMsg(id int, msg proto.Message, mreq *xproto.MsgReq) bool {
 	return false
 }
 
@@ -86,6 +86,6 @@ func SendMsg(id int, msg proto.Message, mreq *xmsg.MsgReq) bool {
 // [req-请求结构体]
 // [addr-目标服务器]
 // [timeout-超时时长]
-func SendCgi(id int, uid int, req *http.Request, addr string, timeout ...int) (cresp *xmsg.CgiResp, err error) {
+func SendCgi(id int, uid int, req *http.Request, addr string, timeout ...int) (cresp *xproto.CgiResp, err error) {
 	return cresp, err
 }

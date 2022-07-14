@@ -14,6 +14,7 @@ import (
 	_ "bytes"
 	_ "encoding/json"
 	"errors"
+	_ "fmt"
 
 	_ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xstring"
 )
@@ -28,14 +29,19 @@ func encodeNoEscape(v interface{}) ([]byte, error) {
 	return []byte{}, nil
 }
 
-// 对象转字符串
-func ToString(v interface{}) string {
+// 对象转字符串输出
+func ToPrint(v interface{}) string {
 	return ""
 }
 
+// 对象转字符串
+func ToString(v interface{}) (string, error) {
+	return "", nil
+}
+
 // 对象转字节数组
-func ToByte(v interface{}) []byte {
-	return []byte{}
+func ToByte(v interface{}) ([]byte, error) {
+	return []byte{}, nil
 }
 
 // 字符串/字节数组转对象（指针）

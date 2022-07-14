@@ -3,8 +3,7 @@
 ![avatar](https://raw.githubusercontent.com/hsu2017/EP.GO.ESVR.LIB/develop/res/esvr-structure.jpg)
 * Author: Wells Hsu
 * Email: wellshsu@outlook.com
-* **内部框架，有限开放，仅供学习，不可商用**
-* **For internal developer only**
+* **内部框架，仅供学习(For internal developer only)**
 
 ## FEATURE | 功能特性
 * 分布式、高承载、无状态的微服务框架

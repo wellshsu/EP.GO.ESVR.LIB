@@ -47,8 +47,8 @@ func RegRpcRoute(_map map[int]*RpcRoute) {
 
 type CgiRoute struct {
 	Route
-	Path   string
-	Method []string
+	Method  []string
+	Timeout int
 }
 
 var CGIROUTEMAP map[int]*CgiRoute // cgi路由
