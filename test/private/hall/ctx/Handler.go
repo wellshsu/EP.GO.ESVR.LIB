@@ -61,16 +61,15 @@ func HandleLogout(rreq *xproto.RpcReq, rresp *xproto.RpcResp) {
 }
 
 func HandleCgi(creq *xproto.CgiReq, cresp *xproto.CgiResp) {
-	req := &mpb.GM_Common{}
+	req := &cpb.CGI_Hello{}
 	xproto.UnpackCgi(creq.Body, req)
-	resp := &mpb.GM_Common{}
+	resp := &cpb.CGI_Hello{}
 	defer func() {
 		cresp.Status = proto.Int(200)
 		cresp.Body, _ = xproto.PackCgi(resp)
 	}()
-	resp.Result = proto.Int(10086)
-	resp.Params = append(resp.Params, "Hi, this is cgi resp.")
-	resp.Params = append(resp.Params, req.GetParams()...)
+	resp.ID = proto.Int(10086)
+	resp.Desc = proto.String(req.GetDesc() + " : " + "Hi, this is cgi resp.")
 	if creq != nil {
 	}
 }
