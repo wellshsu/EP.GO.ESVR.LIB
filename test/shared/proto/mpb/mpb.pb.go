@@ -23,7 +23,7 @@ const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 // 请求结果通知
 type GM_Common struct {
 	Result               *int32   `protobuf:"varint,1,req,name=Result" json:"Result,omitempty"`
-	Params               []string `protobuf:"bytes,2,rep,name=Params" json:"Params,omitempty"`
+	Params               []string `protobuf:"bytes,2,rep,name=Params" json:"Params"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -185,3 +185,4 @@ var fileDescriptor_31451f508f61938d = []byte{
 	0xd3, 0x83, 0x4b, 0x12, 0x4b, 0x4a, 0x41, 0xa6, 0x33, 0x6a, 0xb0, 0x02, 0x02, 0x00, 0x00, 0xff,
 	0xff, 0xfc, 0x91, 0x60, 0x23, 0x9b, 0x00, 0x00, 0x00,
 }
+

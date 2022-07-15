@@ -76,9 +76,9 @@ func (m *RPC_ConnNotifyOfflineReq) GetCID() int64 {
 }
 
 type RPC_GetOnlineFromConnResp struct {
-	ID                   []int32  `protobuf:"varint,1,rep,name=ID" json:"ID,omitempty"`
-	Url                  []string `protobuf:"bytes,2,rep,name=Url" json:"Url,omitempty"`
-	CID                  []int64  `protobuf:"varint,3,rep,name=CID" json:"CID,omitempty"`
+	ID                   []int32  `protobuf:"varint,1,rep,name=ID" json:"ID"`
+	Url                  []string `protobuf:"bytes,2,rep,name=Url" json:"Url"`
+	CID                  []int64  `protobuf:"varint,3,rep,name=CID" json:"CID"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -149,3 +149,4 @@ var fileDescriptor_133edf69513fc562 = []byte{
 	0xb8, 0xb8, 0x98, 0xc0, 0x46, 0x30, 0x23, 0x1b, 0xc1, 0x8c, 0x6c, 0x04, 0xb3, 0x06, 0x33, 0x20,
 	0x00, 0x00, 0xff, 0xff, 0x01, 0x19, 0x7b, 0x85, 0x96, 0x00, 0x00, 0x00,
 }
+
