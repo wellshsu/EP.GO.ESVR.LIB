@@ -10,7 +10,7 @@
 //---------------------------------------------------------------------//
 package xserver
 
-import _ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xlog"
+import _ "github.com/wellshsu/EP.GO.ESVR.LIB/core/xutility/xlog"
 
 type Route struct {
 	ID   int      // 路由ID

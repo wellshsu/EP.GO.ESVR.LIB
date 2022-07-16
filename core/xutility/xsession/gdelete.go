@@ -11,7 +11,7 @@
 package xsession
 
 import (
-	"github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xorm"
+	"github.com/wellshsu/EP.GO.ESVR.LIB/core/xutility/xorm"
 )
 
 // 删除数据（会话内同步，远端异步）

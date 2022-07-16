@@ -1,4 +1,4 @@
-module github.com/hsu2017/EP.GO.ESVR.LIB
+module github.com/wellshsu/EP.GO.ESVR.LIB
 
 go 1.18
 

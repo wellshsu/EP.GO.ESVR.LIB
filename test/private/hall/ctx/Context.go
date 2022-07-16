@@ -11,11 +11,11 @@
 package ctx
 
 import (
-	"github.com/hsu2017/EP.GO.ESVR.LIB/core/xserver"
-	"github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xorm"
-	"github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xsession"
-	"github.com/hsu2017/EP.GO.ESVR.LIB/test/shared/models/mmn"
-	"github.com/hsu2017/EP.GO.ESVR.LIB/test/shared/protos/rpb"
+	"github.com/wellshsu/EP.GO.ESVR.LIB/core/xserver"
+	"github.com/wellshsu/EP.GO.ESVR.LIB/core/xutility/xorm"
+	"github.com/wellshsu/EP.GO.ESVR.LIB/core/xutility/xsession"
+	"github.com/wellshsu/EP.GO.ESVR.LIB/test/shared/model/mmn"
+	"github.com/wellshsu/EP.GO.ESVR.LIB/test/shared/proto/rpb"
 )
 
 func init() {

@@ -11,13 +11,13 @@
 package main
 
 import (
-	"github.com/hsu2017/EP.GO.ESVR.LIB/core/xserver"
-	_ "github.com/hsu2017/EP.GO.ESVR.LIB/test/shared/protos"
+	"github.com/wellshsu/EP.GO.ESVR.LIB/core/xserver"
+	_ "github.com/wellshsu/EP.GO.ESVR.LIB/test/shared/proto"
 
-	_ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xlog"
-	"github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xrun"
+	_ "github.com/wellshsu/EP.GO.ESVR.LIB/core/xutility/xlog"
+	"github.com/wellshsu/EP.GO.ESVR.LIB/core/xutility/xrun"
 
-	"github.com/hsu2017/EP.GO.ESVR.LIB/test/private/hall/app"
+	"github.com/wellshsu/EP.GO.ESVR.LIB/test/private/hall/app"
 )
 
 func main() {

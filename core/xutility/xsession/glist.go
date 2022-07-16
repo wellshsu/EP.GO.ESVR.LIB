@@ -13,8 +13,8 @@ package xsession
 import (
 	_ "reflect"
 
-	_ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xcollect"
-	"github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xorm"
+	_ "github.com/wellshsu/EP.GO.ESVR.LIB/core/xutility/xcollect"
+	"github.com/wellshsu/EP.GO.ESVR.LIB/core/xutility/xorm"
 )
 
 // 列举数据

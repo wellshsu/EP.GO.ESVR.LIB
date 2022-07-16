@@ -13,7 +13,7 @@ package xsession
 import (
 	_ "sync"
 
-	"github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xorm"
+	"github.com/wellshsu/EP.GO.ESVR.LIB/core/xutility/xorm"
 )
 
 // 获取DB指定Column（列）的最大值，并且自增（指定delta值或+1），若未指定Column则自增主键（Column需为int类型）

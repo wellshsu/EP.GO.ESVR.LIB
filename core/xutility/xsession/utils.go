@@ -18,10 +18,10 @@ import (
 	_ "strings"
 	"sync"
 
-	"github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xorm"
-	_ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xrun"
-	_ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xruntime"
-	_ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xtime"
+	"github.com/wellshsu/EP.GO.ESVR.LIB/core/xutility/xorm"
+	_ "github.com/wellshsu/EP.GO.ESVR.LIB/core/xutility/xrun"
+	_ "github.com/wellshsu/EP.GO.ESVR.LIB/core/xutility/xruntime"
+	_ "github.com/wellshsu/EP.GO.ESVR.LIB/core/xutility/xtime"
 )
 
 // 获取当前线程的ID

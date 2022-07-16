@@ -16,7 +16,7 @@ import (
 	_ "math"
 
 	"github.com/golang/protobuf/proto"
-	_ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xlog"
+	_ "github.com/wellshsu/EP.GO.ESVR.LIB/core/xutility/xlog"
 	_ "google.golang.org/protobuf/proto"
 )
 

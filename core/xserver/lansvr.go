@@ -16,7 +16,7 @@ import (
 	_ "math/rand"
 	"sync"
 
-	_ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xlog"
+	_ "github.com/wellshsu/EP.GO.ESVR.LIB/core/xutility/xlog"
 	"nanomsg.org/go-mangos"
 	_ "nanomsg.org/go-mangos/protocol/pull"
 	_ "nanomsg.org/go-mangos/transport/ipc"

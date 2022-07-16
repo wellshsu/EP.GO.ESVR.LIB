@@ -12,14 +12,14 @@ package ctx
 
 import (
 	"github.com/golang/protobuf/proto"
-	"github.com/hsu2017/EP.GO.ESVR.LIB/core/xserver"
-	"github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xorm"
-	"github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xproto"
-	"github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xsession"
-	"github.com/hsu2017/EP.GO.ESVR.LIB/test/shared/models/mmn"
-	"github.com/hsu2017/EP.GO.ESVR.LIB/test/shared/protos/cpb"
-	"github.com/hsu2017/EP.GO.ESVR.LIB/test/shared/protos/mpb"
-	"github.com/hsu2017/EP.GO.ESVR.LIB/test/shared/protos/rpb"
+	"github.com/wellshsu/EP.GO.ESVR.LIB/core/xserver"
+	"github.com/wellshsu/EP.GO.ESVR.LIB/core/xutility/xorm"
+	"github.com/wellshsu/EP.GO.ESVR.LIB/core/xutility/xproto"
+	"github.com/wellshsu/EP.GO.ESVR.LIB/core/xutility/xsession"
+	"github.com/wellshsu/EP.GO.ESVR.LIB/test/shared/model/mmn"
+	"github.com/wellshsu/EP.GO.ESVR.LIB/test/shared/proto/cpb"
+	"github.com/wellshsu/EP.GO.ESVR.LIB/test/shared/proto/mpb"
+	"github.com/wellshsu/EP.GO.ESVR.LIB/test/shared/proto/rpb"
 )
 
 func init() {

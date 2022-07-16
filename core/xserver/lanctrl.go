@@ -16,14 +16,14 @@ import (
 	_ "net/url"
 	_ "time"
 
-	_ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xfs"
-	_ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xjson"
-	_ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xlog"
-	"github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xproto"
-	_ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xrun"
-	_ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xsession"
-	_ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xstring"
-	_ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xtime"
+	_ "github.com/wellshsu/EP.GO.ESVR.LIB/core/xutility/xfs"
+	_ "github.com/wellshsu/EP.GO.ESVR.LIB/core/xutility/xjson"
+	_ "github.com/wellshsu/EP.GO.ESVR.LIB/core/xutility/xlog"
+	"github.com/wellshsu/EP.GO.ESVR.LIB/core/xutility/xproto"
+	_ "github.com/wellshsu/EP.GO.ESVR.LIB/core/xutility/xrun"
+	_ "github.com/wellshsu/EP.GO.ESVR.LIB/core/xutility/xsession"
+	_ "github.com/wellshsu/EP.GO.ESVR.LIB/core/xutility/xstring"
+	_ "github.com/wellshsu/EP.GO.ESVR.LIB/core/xutility/xtime"
 )
 
 func StartLan(lanCfg *LanCfg, handleMsg func(*xproto.MsgReq),
