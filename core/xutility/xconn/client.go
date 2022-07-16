@@ -15,10 +15,10 @@ import (
 	"net"
 	_ "time"
 
-	_ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xlog"
-	"github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xobj"
-	_ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xrun"
-	_ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xtime"
+	_ "github.com/wellshsu/EP.GO.ESVR.LIB/core/xutility/xlog"
+	"github.com/wellshsu/EP.GO.ESVR.LIB/core/xutility/xobj"
+	_ "github.com/wellshsu/EP.GO.ESVR.LIB/core/xutility/xrun"
+	_ "github.com/wellshsu/EP.GO.ESVR.LIB/core/xutility/xtime"
 )
 
 type Client struct {

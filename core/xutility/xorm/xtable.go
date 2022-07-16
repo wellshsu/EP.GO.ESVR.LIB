@@ -17,11 +17,11 @@ import (
 	"time"
 	_ "unsafe"
 
-	_ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xjson"
-	_ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xlog"
-	"github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xobj"
-	_ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xstring"
-	_ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xtime"
+	_ "github.com/wellshsu/EP.GO.ESVR.LIB/core/xutility/xjson"
+	_ "github.com/wellshsu/EP.GO.ESVR.LIB/core/xutility/xlog"
+	"github.com/wellshsu/EP.GO.ESVR.LIB/core/xutility/xobj"
+	_ "github.com/wellshsu/EP.GO.ESVR.LIB/core/xutility/xstring"
+	_ "github.com/wellshsu/EP.GO.ESVR.LIB/core/xutility/xtime"
 )
 
 const (

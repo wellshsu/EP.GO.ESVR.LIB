@@ -11,8 +11,8 @@
 package xserver
 
 import (
-	"github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xevt"
-	"github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xproto"
+	"github.com/wellshsu/EP.GO.ESVR.LIB/core/xutility/xevt"
+	"github.com/wellshsu/EP.GO.ESVR.LIB/core/xutility/xproto"
 )
 
 var (

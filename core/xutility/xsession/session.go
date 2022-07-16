@@ -17,10 +17,10 @@ import (
 	_ "sync"
 	_ "sync/atomic"
 
-	_ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xfs"
-	_ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xrun"
-	_ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xruntime"
-	_ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xtime"
+	_ "github.com/wellshsu/EP.GO.ESVR.LIB/core/xutility/xfs"
+	_ "github.com/wellshsu/EP.GO.ESVR.LIB/core/xutility/xrun"
+	_ "github.com/wellshsu/EP.GO.ESVR.LIB/core/xutility/xruntime"
+	_ "github.com/wellshsu/EP.GO.ESVR.LIB/core/xutility/xtime"
 )
 
 // 开始会话（返回会话id，使用该id结束会话）

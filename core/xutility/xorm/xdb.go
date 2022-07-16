@@ -15,10 +15,10 @@ import (
 	_ "sync"
 
 	_ "github.com/go-sql-driver/mysql"
-	_ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xconfig"
-	_ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xfs"
-	_ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xlog"
-	_ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xtime"
+	_ "github.com/wellshsu/EP.GO.ESVR.LIB/core/xutility/xconfig"
+	_ "github.com/wellshsu/EP.GO.ESVR.LIB/core/xutility/xfs"
+	_ "github.com/wellshsu/EP.GO.ESVR.LIB/core/xutility/xlog"
+	_ "github.com/wellshsu/EP.GO.ESVR.LIB/core/xutility/xtime"
 )
 
 var (

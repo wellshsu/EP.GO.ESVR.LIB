@@ -5,10 +5,10 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/hsu2017/EP.GO.ESVR.LIB/core/xserver"
-	"github.com/hsu2017/EP.GO.ESVR.LIB/test/shared/proto/cpb"
-	"github.com/hsu2017/EP.GO.ESVR.LIB/test/shared/proto/mpb"
-	"github.com/hsu2017/EP.GO.ESVR.LIB/test/shared/proto/rpb"
+	"github.com/wellshsu/EP.GO.ESVR.LIB/core/xserver"
+	"github.com/wellshsu/EP.GO.ESVR.LIB/test/shared/proto/cpb"
+	"github.com/wellshsu/EP.GO.ESVR.LIB/test/shared/proto/mpb"
+	"github.com/wellshsu/EP.GO.ESVR.LIB/test/shared/proto/rpb"
 )
 
 func init() {

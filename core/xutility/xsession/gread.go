@@ -11,7 +11,7 @@
 package xsession
 
 import (
-	"github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xorm"
+	"github.com/wellshsu/EP.GO.ESVR.LIB/core/xutility/xorm"
 )
 
 // 读取数据

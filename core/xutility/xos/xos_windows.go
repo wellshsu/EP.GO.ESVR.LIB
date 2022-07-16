@@ -15,9 +15,9 @@ import (
 	_ "time"
 	_ "unsafe"
 
-	_ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xstring"
-	_ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xtime"
 	_ "github.com/lxn/win"
+	_ "github.com/wellshsu/EP.GO.ESVR.LIB/core/xutility/xstring"
+	_ "github.com/wellshsu/EP.GO.ESVR.LIB/core/xutility/xtime"
 	_ "golang.org/x/sys/windows"
 )
 

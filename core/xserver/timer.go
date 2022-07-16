@@ -15,12 +15,12 @@ import (
 	_ "sync/atomic"
 	"time"
 
-	_ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xlog"
-	_ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xproto"
-	_ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xrun"
-	_ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xruntime"
-	_ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xsession"
-	_ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xtime"
+	_ "github.com/wellshsu/EP.GO.ESVR.LIB/core/xutility/xlog"
+	_ "github.com/wellshsu/EP.GO.ESVR.LIB/core/xutility/xproto"
+	_ "github.com/wellshsu/EP.GO.ESVR.LIB/core/xutility/xrun"
+	_ "github.com/wellshsu/EP.GO.ESVR.LIB/core/xutility/xruntime"
+	_ "github.com/wellshsu/EP.GO.ESVR.LIB/core/xutility/xsession"
+	_ "github.com/wellshsu/EP.GO.ESVR.LIB/core/xutility/xtime"
 )
 
 const (

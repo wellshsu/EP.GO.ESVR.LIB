@@ -13,7 +13,7 @@ package xcollect
 import (
 	_ "reflect"
 
-	_ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xlog"
+	_ "github.com/wellshsu/EP.GO.ESVR.LIB/core/xutility/xlog"
 )
 
 // [Deprecated]判断集合是否存在元素（支持指针类型的map和slice），compare为元素或对比函数

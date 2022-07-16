@@ -13,12 +13,12 @@ package app
 import (
 	"fmt"
 
-	"github.com/hsu2017/EP.GO.ESVR.LIB/core/xserver"
-	"github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xconn"
-	"github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xlog"
-	"github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xproto"
-	"github.com/hsu2017/EP.GO.ESVR.LIB/test/shared/proto/mpb"
-	"github.com/hsu2017/EP.GO.ESVR.LIB/test/shared/proto/rpb"
+	"github.com/wellshsu/EP.GO.ESVR.LIB/core/xserver"
+	"github.com/wellshsu/EP.GO.ESVR.LIB/core/xutility/xconn"
+	"github.com/wellshsu/EP.GO.ESVR.LIB/core/xutility/xlog"
+	"github.com/wellshsu/EP.GO.ESVR.LIB/core/xutility/xproto"
+	"github.com/wellshsu/EP.GO.ESVR.LIB/test/shared/proto/mpb"
+	"github.com/wellshsu/EP.GO.ESVR.LIB/test/shared/proto/rpb"
 
 	"github.com/golang/protobuf/proto"
 )

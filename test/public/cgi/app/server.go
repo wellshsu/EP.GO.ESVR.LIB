@@ -14,12 +14,12 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/hsu2017/EP.GO.ESVR.LIB/core/xserver"
-	"github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xhttp"
-	"github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xjson"
-	"github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xproto"
-	"github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xrun"
-	"github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xstring"
+	"github.com/wellshsu/EP.GO.ESVR.LIB/core/xserver"
+	"github.com/wellshsu/EP.GO.ESVR.LIB/core/xutility/xhttp"
+	"github.com/wellshsu/EP.GO.ESVR.LIB/core/xutility/xjson"
+	"github.com/wellshsu/EP.GO.ESVR.LIB/core/xutility/xproto"
+	"github.com/wellshsu/EP.GO.ESVR.LIB/core/xutility/xrun"
+	"github.com/wellshsu/EP.GO.ESVR.LIB/core/xutility/xstring"
 )
 
 type CgiServer struct {

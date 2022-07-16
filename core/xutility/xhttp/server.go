@@ -13,7 +13,7 @@ package xhttp
 import (
 	"net/http"
 
-	_ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xlog"
+	_ "github.com/wellshsu/EP.GO.ESVR.LIB/core/xutility/xlog"
 )
 
 type Server struct {

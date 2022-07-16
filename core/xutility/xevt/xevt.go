@@ -11,9 +11,9 @@
 package xevt
 
 import (
-	_ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xcollect"
-	_ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xlog"
-	_ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xrun"
+	_ "github.com/wellshsu/EP.GO.ESVR.LIB/core/xutility/xcollect"
+	_ "github.com/wellshsu/EP.GO.ESVR.LIB/core/xutility/xlog"
+	_ "github.com/wellshsu/EP.GO.ESVR.LIB/core/xutility/xrun"
 )
 
 type IHandler interface {

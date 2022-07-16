@@ -14,8 +14,8 @@ import (
 	_ "errors"
 	_ "fmt"
 
-	_ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xlog"
-	_ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xmath"
+	_ "github.com/wellshsu/EP.GO.ESVR.LIB/core/xutility/xlog"
+	_ "github.com/wellshsu/EP.GO.ESVR.LIB/core/xutility/xmath"
 	"nanomsg.org/go-mangos"
 	_ "nanomsg.org/go-mangos/protocol/push"
 	_ "nanomsg.org/go-mangos/transport/ipc"

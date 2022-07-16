@@ -11,8 +11,8 @@
 package xserver
 
 import (
-	"github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xconfig"
-	_ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xlog"
+	"github.com/wellshsu/EP.GO.ESVR.LIB/core/xutility/xconfig"
+	_ "github.com/wellshsu/EP.GO.ESVR.LIB/core/xutility/xlog"
 )
 
 type SvrCfg struct {

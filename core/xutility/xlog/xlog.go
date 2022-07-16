@@ -16,7 +16,7 @@ import (
 	_ "io/ioutil"
 	_ "strings"
 
-	_ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xjson"
+	_ "github.com/wellshsu/EP.GO.ESVR.LIB/core/xutility/xjson"
 )
 
 const (

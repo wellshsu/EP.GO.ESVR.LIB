@@ -15,14 +15,14 @@ import (
 	_ "sort"
 	_ "time"
 
-	_ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xlog"
-	"github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xobj"
-	_ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xorm"
-	_ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xos"
-	"github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xproto"
-	_ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xrun"
-	_ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xsession"
-	_ "github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xtime"
+	_ "github.com/wellshsu/EP.GO.ESVR.LIB/core/xutility/xlog"
+	"github.com/wellshsu/EP.GO.ESVR.LIB/core/xutility/xobj"
+	_ "github.com/wellshsu/EP.GO.ESVR.LIB/core/xutility/xorm"
+	_ "github.com/wellshsu/EP.GO.ESVR.LIB/core/xutility/xos"
+	"github.com/wellshsu/EP.GO.ESVR.LIB/core/xutility/xproto"
+	_ "github.com/wellshsu/EP.GO.ESVR.LIB/core/xutility/xrun"
+	_ "github.com/wellshsu/EP.GO.ESVR.LIB/core/xutility/xsession"
+	_ "github.com/wellshsu/EP.GO.ESVR.LIB/core/xutility/xtime"
 )
 
 const (

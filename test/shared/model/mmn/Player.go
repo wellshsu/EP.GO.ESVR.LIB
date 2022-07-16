@@ -3,8 +3,8 @@ package mmn
 import (
 	"fmt"
 
-	"github.com/hsu2017/EP.GO.ESVR.LIB/core/xutility/xorm"
-	"github.com/hsu2017/EP.GO.ESVR.LIB/test/shared/model/mdf"
+	"github.com/wellshsu/EP.GO.ESVR.LIB/core/xutility/xorm"
+	"github.com/wellshsu/EP.GO.ESVR.LIB/test/shared/model/mdf"
 )
 
 type Player struct {
